@@ -131,4 +131,3 @@ class Backstory(Base):
     possesion_instruments = Column(String(200))
     equipment = Column(String(200))
     skill = Column(Text)
-
