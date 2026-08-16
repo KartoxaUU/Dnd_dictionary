@@ -1,10 +1,29 @@
 import os
-from sqlalchemy import create_engine, Column, Integer, String, Text, Boolean, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, Text, Boolean, ForeignKey, Table, UniqueConstraint
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
 
 # Таблицы
+
+spell_class_association = Table(
+    'spell_class_association',
+    Base.metadata,
+    Column('id', Integer, primary_key=True),
+    Column('spell_id', Integer, ForeignKey('spells.id', ondelete='CASCADE')),
+    Column('class_id', Integer, ForeignKey('classes.id', ondelete='CASCADE')),
+    UniqueConstraint('spell_id', 'class_id', name='uq_spell_class')
+)
+
+spell_subclass_association = Table(
+    'spell_subclass_association',
+    Base.metadata,
+    Column('id', Integer, primary_key=True),
+    Column('spell_id', Integer, ForeignKey('spells.id', ondelete='CASCADE')),
+    Column('subclass_id', Integer, ForeignKey('subclasses.id', ondelete='CASCADE')),
+    UniqueConstraint('spell_id', 'subclass_id', name='uq_spell_class')
+)
+
 
 class Race(Base):
 
@@ -57,6 +76,7 @@ class Class(Base):
     abilities = relationship("ClassAbility", back_populates="parent_class", cascade="all, delete-orphan")
     subclasses = relationship("Subclass", back_populates="parent_class", cascade="all, delete-orphan")
     features = relationship("Feature", back_populates="parent_class", cascade="all, delete-orphan")
+    spells = relationship("Spell", secondary=spell_class_association, back_populates="classes")
 
     def __repr__(self):
         return f"Class(name={self.name}"
@@ -102,6 +122,7 @@ class Subclass(Base):
 
     parent_class = relationship("Class", back_populates="subclasses")
     subclass_abilities = relationship("SubclassAbility", back_populates="subclass", cascade="all, delete-orphan")
+    spells = relationship("Spell", secondary=spell_subclass_association, back_populates="subclasses")
 
     def __repr__(self):
         return f"Subclass(name={self.name}"
@@ -149,7 +170,7 @@ class Item(Base):
     is_armor = Column(Boolean)
     is_potion = Column(Boolean)
     is_wonderful_object = Column(Boolean)
-    is_custom = Column(Boolean)
+    is_custom = Column(Boolean, default=False)
     is_warrior = Column(Boolean)
     description = Column(Text)
 
@@ -163,13 +184,14 @@ class Monster(Base):
     name = Column(String(50), nullable=False, unique=True)
     hits = Column(String(20))
     armor_class = Column(Integer)
-    speed = Column(Integer)
+    speed = Column(String(50))
     strengh = Column(Integer)
     agility = Column(Integer)
     endurance = Column(Integer)
     wisdom = Column(Integer)
     intelligence = Column(Integer)
     charisma = Column(Integer)
+    savingthrows = Column(String(100))
     skills = Column(String(200))
     resists = Column(String(200))
     immunity_damage = Column(String(200))
@@ -185,7 +207,7 @@ class Monster(Base):
     mythical_actions = Column(Text)
     lair = Column(Text)
     description = Column(Text)
-    is_custom=Column(Boolean)
+    is_custom=Column(Boolean, default=False)
 
 class Rule(Base):
 
@@ -196,6 +218,31 @@ class Rule(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False, unique=True)
     description = Column(Text)
+
+
+class Spell(Base):
+
+    # Заклинания
+
+    __tablename__ = 'spells'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50), nullable=False, unique=True)
+    level = Column(Integer)
+    school = Column(String(20))
+    time = Column(String(20))
+    distance = Column(String(20))
+    components = Column(String(30))
+    duration = Column(String(20))
+    description = Column(Text)
+    upper_level = Column(Text)
+
+    classes = relationship("Class", secondary='spell_class_association', back_populates='spells')
+    subclasses = relationship("Subclass", secondary='spell_subclass_association', back_populates='spells')
+
+    def __repr__(self):
+        return f"<Spell(name='{self.name}', level={self.level}, school='{self.school}')>"
+
 
 # Создание бд
 

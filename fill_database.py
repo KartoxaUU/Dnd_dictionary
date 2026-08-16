@@ -1,7 +1,7 @@
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from create_database import Race, RacicalAbility, Class, ClassAbility, Feature, Subclass, SubclassAbility, Item, Monster, Rule, Backstory
+from create_database import Race, RacicalAbility, Class, ClassAbility, Feature, Subclass, SubclassAbility, Item, Monster, Rule, Backstory, Spell
 
 def fill_database(db_path="assistant.db"):
 
@@ -554,7 +554,7 @@ def fill_database(db_path="assistant.db"):
         name="Вегепигмей",
         hits="13 (3к6 + 3)",
         armor_class=13,
-        speed=30,
+        speed="30",
         strengh=7,
         agility=14,
         endurance=13,
@@ -606,6 +606,20 @@ def fill_database(db_path="assistant.db"):
 
     session.add(lifestyle_expenses)
 
+    fireball = Spell(
+        name="Огненный шар",
+        level=3,
+        school="воплощение",
+        time="1 действие",
+        distance="150 футов",
+        components="В, С, М (крошечный шарик из гуано летучей мыши и серы)",
+        duration="Мгновенная",
+        description="Яркий луч вылетает из вашего указательного пальца в точку, выбранную вами в пределах дистанции, где и происходит взрыв пламени с гулким ревом. Все существа в пределах сферы с радиусом 20 футов с центром в этой точке должны совершить спасбросок Ловкости. Цель получает 8к6 урона огнём при провале или половину этого урона при успехе. Этот огонь огибает углы. Он воспламеняет горючие предметы, которые никто не несет и не носит.",
+        upper_level="Если вы накладываете это заклинание, используя ячейку 4-го уровня или выше, урон увеличивается на 1к6 за каждый уровень ячейки выше третьего."
+    )
+
+    session.add(fireball)
+
     print("\nСохраняем данные...")
     session.commit()
 
@@ -633,6 +647,8 @@ def fill_database(db_path="assistant.db"):
 
     rules_count = session.query(Rule).count()
     print(f"  📜 Правил: {rules_count}")
+
+    print(f" Заклинаний: {session.query(Spell).count()}")
 
     print("\n✅ Проверка завершена!")
 
