@@ -37,7 +37,7 @@ class Race(Base):
     speed = Column(Integer)
     description = Column(Text)
     languages = Column(String(100))
-    image_path = Column(String(200))
+    image_path = Column(String(50), default="Data/Avatars/Races/base.jpg")
 
     abilities = relationship("RacicalAbility", back_populates="race", cascade="all, delete-orphan")
 
@@ -63,6 +63,7 @@ class Class(Base):
     name = Column(String(50), nullable=False, unique=True)
     description = Column(Text)
     hit_die = Column(Integer)
+    image_path = Column(String(50), default="Data/Avatars/Classes/base.jpg")
     possession_armor = Column(String(100))
     possession_weapon = Column(String(200))
     possession_instruments = Column(String(200))
@@ -164,14 +165,14 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False, unique=True)
     rarity = Column(String(50), nullable=False)
-    is_magical = Column(Boolean)
-    is_weapon = Column(Boolean)
-    configuration = Column(Boolean)
-    is_armor = Column(Boolean)
-    is_potion = Column(Boolean)
-    is_wonderful_object = Column(Boolean)
+    is_magical = Column(Boolean, default=False)
+    is_weapon = Column(Boolean, default=False)
+    configuration = Column(Boolean, default=False)
+    is_armor = Column(Boolean, default=False)
+    is_potion = Column(Boolean, default=False)
+    is_wonderful_object = Column(Boolean, default=False)
     is_custom = Column(Boolean, default=False)
-    is_warrior = Column(Boolean)
+    is_warrior = Column(Boolean, default=False)
     description = Column(Text)
 
 class Monster(Base):
@@ -182,6 +183,8 @@ class Monster(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False, unique=True)
+    size = Column(String(50))
+    tipe = Column(String(50))
     hits = Column(String(20))
     armor_class = Column(Integer)
     speed = Column(String(50))
@@ -236,6 +239,8 @@ class Spell(Base):
     duration = Column(String(20))
     description = Column(Text)
     upper_level = Column(Text)
+    concentration = Column(Boolean, default=False)
+    ritual = Column(Boolean, default=False)
 
     classes = relationship("Class", secondary='spell_class_association', back_populates='spells')
     subclasses = relationship("Subclass", secondary='spell_subclass_association', back_populates='spells')
