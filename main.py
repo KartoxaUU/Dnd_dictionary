@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
 
         # Проверяем, что файл существует
         ui_path = "Data/Screens/main_menu.ui"
-        print(f"🔍 Ищем файл: {ui_path}")
+        print(f"Ищем файл: {ui_path}")
         print(f"   Абсолютный путь: {os.path.abspath(ui_path)}")
         print(f"   Файл существует: {os.path.exists(ui_path)}")
 
@@ -39,16 +39,16 @@ class MainWindow(QMainWindow):
         loader = QUiLoader()
 
         # Пробуем загрузить
-        print("⏳ Загружаем UI...")
+        print("Загружаем UI...")
         self.ui = loader.load(ui_file, self)
         ui_file.close()
 
         if not self.ui:
-            print("❌ UI не загружен!")
+            print("UI не загружен!")
             QMessageBox.critical(self, "Ошибка", "Не удалось загрузить интерфейс")
             sys.exit(1)
 
-        print("✅ UI загружен!")
+        print("UI загружен!")
         print(f"   Тип: {type(self.ui)}")
         print(f"   Дочерних виджетов: {len(self.ui.children())}")
 
@@ -82,27 +82,28 @@ class MainWindow(QMainWindow):
     def connect_signals(self):
         """Подключает кнопки к функциям"""
         button_map = {
-            'Button_Items': self.show_items,
-            'Button_Classes': self.show_classes,
+            'Button_items': self.show_items,
+            'Button_classes': self.show_classes,
             'Button_Spells': self.show_spells,
-            'Button_Races': self.show_races,
-            'Button_Backstories': self.show_backstories,
-            'Button_Monsters': self.show_monsters
+            'Button_races': self.show_races,
+            'Button_backstories': self.show_backstories,
+            'Button_Bestiary': self.show_monsters,
+            'Button_mechanics': self.show_mechanics,
         }
 
         for name, handler in button_map.items():
             if hasattr(self.ui, name):
                 btn = getattr(self.ui, name)
                 btn.clicked.connect(handler)
-                print(f"✅ Подключена кнопка: {name}")
+                print(f"Подключена кнопка: {name}")
             else:
-                print(f"⚠️ Кнопка не найдена: {name}")
+                print(f"Кнопка не найдена: {name}")
 
     def show_not_implemented(self, feature_name):
         QMessageBox.information(
             self,
             "В разработке",
-            f"Раздел '{feature_name}' пока в разработке.\nСкоро он появится! 🚀"
+            f"Раздел '{feature_name}' пока в разработке.\nДитенахуй"
         )
 
     def show_items(self):
@@ -115,13 +116,16 @@ class MainWindow(QMainWindow):
         self.show_not_implemented("Заклинания")
 
     def show_races(self):
-        self.show_not_implemented("Расы")
+        self.show_not_implemented("Негры")
 
     def show_backstories(self):
         self.show_not_implemented("Предыстории")
 
     def show_monsters(self):
         self.show_not_implemented("Бестиарий")
+
+    def show_mechanics(self):
+        self.show_not_implemented("Механики")
 
     def closeEvent(self, event):
         self.dm.close()
@@ -135,7 +139,7 @@ def main():
     window = MainWindow()
     window.show()
 
-    print("✅ Приложение запущено!")
+    print("Приложение запущено!")
     sys.exit(app.exec())
 
 
