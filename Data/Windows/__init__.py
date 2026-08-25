@@ -1,0 +1,1 @@
+from .window_classes import ClassWindow

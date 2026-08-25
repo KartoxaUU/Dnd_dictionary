@@ -5,6 +5,7 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, Qt
 
 from data_manager import DataManager
+from Data.Windows import (window_classes, ClassWindow)
 
 
 class MainWindow(QMainWindow):
@@ -110,7 +111,8 @@ class MainWindow(QMainWindow):
         self.show_not_implemented("Предметы")
 
     def show_classes(self):
-        self.show_not_implemented("Классы")
+        self.window = ClassWindow(self.dm, self)
+        self.window.show()
 
     def show_spells(self):
         self.show_not_implemented("Заклинания")
