@@ -1,68 +1,52 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
-from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QMessageBox
+from PySide6.QtUiTools import QUiLoader
+from PySide6.QtCore import QFile
+import os
+from data_manager import DataManager
 
-class BaseWindow(QWidget):
-    def __init__(self, title: str, data_manager, parent=None):
+
+class BasePage(QWidget):
+    """Базовый класс для всех страниц"""
+
+    def __init__(self, ui_path, parent=None):
         super().__init__(parent)
-        self.dm = data_manager
-        self.window_title = title
+        self.dm = DataManager()
+        self.ui_path = ui_path
+        self.ui = None
 
-        self.setWindowTitle(f"D&D Assistant - {self.window_title}")
-        self.setGeometry(200, 200, 1200, 800)
-        self.setMinimumSize(1200, 800)
-
+        self.load_ui()
         self.setup_ui()
-        self.show()
+
+    def load_ui(self):
+        """Загружает UI из .ui файла"""
+        if not os.path.exists(self.ui_path):
+            QMessageBox.critical(self, "Ошибка", f"Файл {self.ui_path} не найден!")
+            return
+
+        ui_file = QFile(self.ui_path)
+        if not ui_file.open(QFile.ReadOnly):
+            QMessageBox.critical(self, "Ошибка", f"Не удалось открыть файл: {self.ui_path}")
+            return
+
+        loader = QUiLoader()
+        self.ui = loader.load(ui_file, self)
+        ui_file.close()
+
+        if not self.ui:
+            QMessageBox.critical(self, "Ошибка", "Не удалось загрузить интерфейс")
+            return
+
+        # Добавляем UI в layout
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.addWidget(self.ui)
+
+        print(f"Загружен UI: {self.ui_path}")
 
     def setup_ui(self):
-        """Создает базовый интерфейс"""
+        """Метод для настройки UI (переопределяется в наследниках)"""
+        pass
 
-        layout = QVBoxLayout()
-
-        title_label = QLabel(f"📚 {self.window_title}")
-        title_label.setStyleSheet("font-size: 24px; font-weight: bold; margin: 10px;")
-        title_label.setAlignment(Qt.AlignCenter)
-        layout.addWidget(title_label)
-
-        # Блок "В разработке"
-        dev_label = QLabel("🚧 В разработке")
-        dev_label.setStyleSheet("font-size: 36px; color: #888;")
-        dev_label.setAlignment(Qt.AlignCenter)
-        layout.addWidget(dev_label)
-
-        dev_desc = QLabel("Этот раздел будет реализован в ближайшее время")
-        dev_desc.setStyleSheet("font-size: 16px; color: #aaa;")
-        dev_desc.setAlignment(Qt.AlignCenter)
-        layout.addWidget(dev_desc)
-
-        layout.addStretch()
-
-        # Кнопка назад
-        back_btn = QPushButton("← Назад")
-        back_btn.clicked.connect(self.close)
-        back_btn.setMaximumWidth(200)
-        back_btn.setStyleSheet("""
-                    QPushButton {
-                        background-color: #4a4a4a;
-                        color: white;
-                        border-radius: 8px;
-                        padding: 10px;
-                        font-size: 14px;
-                    }
-                    QPushButton:hover {
-                        background-color: #5a5a5a;
-                    }
-                """)
-
-        btn_layout = QHBoxLayout()
-        btn_layout.addStretch()
-        btn_layout.addWidget(back_btn)
-        btn_layout.addStretch()
-        layout.addLayout(btn_layout)
-
-    def center_window(self):
-        """Центрирует окно на экране"""
-        screen = self.screen().geometry()
-        x = (screen.width() - self.width()) // 2
-        y = (screen.height() - self.height()) // 2
-        self.move(x, y)
+    def closeEvent(self, event):
+        self.dm.close()
+        event.accept()
