@@ -28,7 +28,7 @@ class MainWindow(QMainWindow):
         """Загружает все страницы"""
         self.pages = {
             'main': MainMenuPage(self, self.show_page),
-            'classes': ClassesPage(self, self.show_page),
+            'classes': ClassesPage(self, self.go_back),
             #'items': ItemsPage(self, self.show_page),
             # 'spells': SpellsPage(self, self.show_page),
             # 'races': RacesPage(self, self.show_page),
