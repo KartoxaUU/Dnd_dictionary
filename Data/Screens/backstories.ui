@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>classes</class>
- <widget class="QWidget" name="classes">
+ <class>rules</class>
+ <widget class="QWidget" name="rules">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -174,10 +174,13 @@ color: rgb(240, 213, 163);          /* Яркое золото для букв �
 border: none;                       /* Убираем стандартные рамки Windows */</string>
         </property>
         <property name="text">
-         <string>                Классы</string>
+         <string>Предыстории</string>
         </property>
         <property name="textFormat">
          <enum>Qt::TextFormat::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -230,7 +233,7 @@ border: none;                       /* Убираем стандартные р�
 }</string>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
+         <enum>QFrame::Shape::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
@@ -284,39 +287,18 @@ QListWidget::item:selected {
       <item>
        <widget class="QFrame" name="rightContentPanel">
         <property name="styleSheet">
-         <string notr="true">
-QLabel a {
-    display: block;                      
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);          
-    
-    padding: 14px 20px;                 
-    margin-bottom: 10px;                  
-    border: none !important;
-    border-radius: 6px;                  
-    
-    text-decoration: none;                
-    text-transform: uppercase;          
-    font-weight: bold;                  
-    font-size: 14px;
-}
-
-
-QLabel a:hover {
-    background-color: rgb(45, 56, 76);   
-    color: rgb(255, 223, 160);           
+         <string notr="true">#rightContentPanel {
+    background-color: rgb(133, 146, 158);
+    border: none;
 }</string>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
+         <enum>QFrame::Shape::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
-        <property name="lineWidth">
-         <number>1</number>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0">
+        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="3">
          <item>
           <widget class="QScrollArea" name="classScrollArea">
            <property name="styleSheet">
@@ -370,15 +352,6 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
     height: 0px;
 }</string>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::Shape::NoFrame</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Shadow::Plain</enum>
-           </property>
-           <property name="lineWidth">
-            <number>0</number>
-           </property>
            <property name="widgetResizable">
             <bool>true</bool>
            </property>
@@ -387,17 +360,11 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>1123</width>
-              <height>6000</height>
+              <width>1133</width>
+              <height>1000</height>
              </rect>
             </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>6000</height>
-             </size>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,2">
+            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="2">
              <property name="spacing">
               <number>0</number>
              </property>
@@ -414,63 +381,6 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
               <number>9</number>
              </property>
              <item>
-              <widget class="QWidget" name="box1" native="true">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>300</height>
-                </size>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
-                <item>
-                 <widget class="QLabel" name="Class_icon">
-                  <property name="minimumSize">
-                   <size>
-                    <width>300</width>
-                    <height>300</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>300</width>
-                    <height>300</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(114, 34, 43);            /* Фирменный благородный бордовый цвет */
-font-size: 14px;
-font-weight: bold;</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="Class_name">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>300</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(40, 44, 52);             /* Глубокий тёмно-угольный цвет */
-font-size: 26px;                    /* Крупный размер для названия класса */
-font-weight: bold;    </string>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::Shape::NoFrame</enum>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
               <widget class="QWidget" name="box2" native="true">
                <layout class="QVBoxLayout" name="verticalLayout_5">
                 <property name="spacing">
@@ -486,108 +396,38 @@ font-weight: bold;    </string>
                  <number>9</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="Class_info">
+                 <widget class="QLabel" name="Backstory_name">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(55, 60, 70);             /* Мягкий тёмный цвет текста для комфортного чтения */
-font-size: 14px;</string>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>110</height>
+                   </size>
                   </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="Class_abilities">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Shadow::Raised</enum>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="Class_help1">
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>60</height>
+                    <height>110</height>
                    </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Palatino Linotype</family>
-                    <pointsize>-1</pointsize>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
-    background-color: rgb(31, 39, 53);  /* Глубокий тёмно-синий фон */
-    color: rgb(240, 213, 163);          /* Спокойное золото для текста */
-    border: none;                       /* Убираем рамку */
-    border-radius: 6px;                 /* Скругление углов */
-    padding: 10px 14px;                 /* Внутренние отступы */
-    
-    /* Ваш книжный фэнтези-шрифт */
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Эффект при наведении курсора */
-QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Плашка становится светлее */
-}
-
-/* Эффект при нажатии */
-QPushButton:pressed {
-    background-color: rgb(41, 52, 71);  /* Тёмно-сине-стальной цвет при нажатии */
-    color: rgb(255, 223, 160);          /* Яркое золото для текста */
-}
-
-/* Если кнопка отключена (disabled) */
-QPushButton:disabled {
-    background-color: rgb(20, 25, 35);  /* Ещё темнее */
-    color: rgb(150, 130, 100);          /* Приглушённое золото */
-}
-
-/* Если кнопка в фокусе (но без пунктирной рамки) */
-QPushButton:focus {
-    outline: none;                      /* Отключаем пунктирную рамку фокуса */
-}</string>
                   </property>
                   <property name="text">
                    <string/>
                   </property>
-                  <property name="checkable">
+                  <property name="textFormat">
+                   <enum>Qt::TextFormat::RichText</enum>
+                  </property>
+                  <property name="wordWrap">
                    <bool>true</bool>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="Class_features">
+                 <widget class="QLabel" name="Backstory_description">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                     <horstretch>0</horstretch>
@@ -597,111 +437,13 @@ QPushButton:focus {
                   <property name="text">
                    <string/>
                   </property>
+                  <property name="textFormat">
+                   <enum>Qt::TextFormat::RichText</enum>
+                  </property>
                   <property name="wordWrap">
                    <bool>true</bool>
                   </property>
                  </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_5">
-                  <item>
-                   <widget class="QListWidget" name="Class_help2">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>300</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Palatino Linotype</family>
-                      <pointsize>16</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QListWidget {
-    background-color: transparent;      /* Полностью прозрачный фон, чтобы просвечивал пергамент */
-    border: none;                       /* Убираем внешние технические рамки */
-    outline: none;                      /* Отключаем пунктирные линии выбора */
-}
-
-/* Настройка внешнего вида плашек-подклассов */
-QListWidget::item {
-    background-color: rgb(31, 39, 53);  /* Глубокий тёмно-синий фон по умолчанию */
-    color: rgb(240, 213, 163);          /* Спокойное золото для текста */
-    border-radius: 6px;                 /* Аккуратное скругление углов */
-    padding: 10px 14px;                 /* Внутренние отступы плашки */
-    margin-bottom: 8px;                 /* Расстояние между строчками подклассов */
-    
-    /* Фиксация вашего книжного фэнтези-шрифта */
-    font-family: &quot;Palatino Linotype&quot;;   
-    font-size: 13px;
-    font-weight: bold;
-}
-
-/* Эффект при наведении курсора мыши на подкласс */
-QListWidget::item:hover {
-    background-color: rgb(45, 56, 76);  /* Плашка становится капельку светлее */
-}
-
-/* ПРИНУДИТЕЛЬНЫЙ ОБХОД БЛОКИРОВКИ QT ПРИ НАЖАТИИ (В ТОЧНОСТИ КАК ДЛЯ ГЛАВНЫХ КЛАССОВ) */
-QListWidget::item:selected, 
-QListWidget::item:selected:active,
-QListWidget::item:selected:not(active) {
-    /* Тот самый приглушённый тёмно-сине-стальной цвет фона при нажатии */
-    background-color: rgb(41, 52, 71);  
-    
-    /* Золото букв принудительно загорается сочным и ярким светом */
-    color: rgb(255, 223, 160) !important; 
-}
-
-/* Финальный предохранитель для текста внутри выделенной строки */
-QListWidget {
-    selection-background-color: rgb(41, 52, 71);
-    selection-color: rgb(255, 223, 160);
-}
-</string>
-                    </property>
-                    <property name="verticalScrollBarPolicy">
-                     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-                    </property>
-                    <property name="horizontalScrollBarPolicy">
-                     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-                    </property>
-                    <property name="sizeAdjustPolicy">
-                     <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-                    </property>
-                    <property name="isWrapping" stdset="0">
-                     <bool>false</bool>
-                    </property>
-                    <property name="wordWrap">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="Class_subclass">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="wordWrap">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_2">
@@ -712,10 +454,7 @@ QListWidget {
                    </sizepolicy>
                   </property>
                   <property name="text">
-                   <string>Артем лох</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+                   <string/>
                   </property>
                  </widget>
                 </item>

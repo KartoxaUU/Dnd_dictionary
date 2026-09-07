@@ -3,6 +3,7 @@ from Data.Windows.page_main import MainMenuPage
 from Data.Windows.page_classes import ClassesPage
 from Data.Windows.page_races import RacesPage
 from Data.Windows.page_mechanics import MechanicsPage
+from Data.Windows.page_backstrories import BackstoriesPage
 
 
 class MainWindow(QMainWindow):
@@ -34,7 +35,7 @@ class MainWindow(QMainWindow):
             #'items': ItemsPage(self, self.show_page),
             # 'spells': SpellsPage(self, self.show_page),
             'races': RacesPage(self, self.go_back),
-            # 'backstories': BackstoriesPage(self, self.show_page),
+            'backstories': BackstoriesPage(self, self.go_back),
             # 'monsters': MonstersPage(self, self.show_page),
             'mechanics': MechanicsPage(self, self.go_back),
         }

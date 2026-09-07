@@ -1,5 +1,3 @@
-from PySide6.QtGui import QPixmap
-
 from Data.Windows.base_window import BasePage
 from PySide6.QtWidgets import QMessageBox, QListWidgetItem
 from PySide6.QtCore import Qt
@@ -118,7 +116,7 @@ class MechanicsPage(BasePage):
         self.show_mechanic_details(mechanic_obj)
 
     def show_mechanic_details(self, mechanic_obj):
-        """Выводит данные о расе"""
+        """Выводит данные о механике"""
 
         if hasattr(self.ui, 'Rule_name'):
             self.ui.Rule_name.setStyleSheet("""
@@ -126,7 +124,7 @@ class MechanicsPage(BasePage):
                                                 background-color: #f8f9fa;
                                                 border: 1px solid #dee2e6;
                                                 border-radius: 8px;
-                                                padding: 15px;
+                                                padding: 17px;
                                                 font-size: 50px;
                                                 color: #333;
                                             }""")

@@ -152,6 +152,7 @@ class Backstory(Base):
     description = Column(Text)
     possesion_skills = Column(String(100))
     possesion_instruments = Column(String(200))
+    possesion_languages = Column(String(200), default="")
     equipment = Column(String(200))
     skill_name = Column(String(50))
     skill_description = Column(Text)
