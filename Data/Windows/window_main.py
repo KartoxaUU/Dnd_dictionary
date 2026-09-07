@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QMainWindow, QStackedWidget, QVBoxLayout, QWidget
 from Data.Windows.page_main import MainMenuPage
 from Data.Windows.page_classes import ClassesPage
 from Data.Windows.page_races import RacesPage
+from Data.Windows.page_mechanics import MechanicsPage
 
 
 class MainWindow(QMainWindow):
@@ -35,7 +36,7 @@ class MainWindow(QMainWindow):
             'races': RacesPage(self, self.go_back),
             # 'backstories': BackstoriesPage(self, self.show_page),
             # 'monsters': MonstersPage(self, self.show_page),
-            # 'mechanics': MechanicsPage(self, self.show_page),
+            'mechanics': MechanicsPage(self, self.go_back),
         }
 
         # Добавляем все страницы в стек
