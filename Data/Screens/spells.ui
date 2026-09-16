@@ -1,0 +1,1908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>spells</class>
+ <widget class="QWidget" name="spells">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1920</width>
+    <height>1080</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: rgb(133, 146, 158);
+}
+QWidget {
+    font-family: &quot;Palatino Linotype&quot;;
+}</string>
+  </property>
+  <widget class="QWidget" name="TopBar" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#topBar {
+    background-color: rgb(24, 32, 43); /* Красим весь верх в цвет правой панели */
+    border: none;
+}</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,11,0,0">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="btn_back">
+      <property name="minimumSize">
+       <size>
+        <width>248</width>
+        <height>62</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Palatino Linotype</family>
+        <pointsize>23</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
+    color: rgb(240, 213, 163);          /* Яркое золото для текста */
+    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
+    border-radius: 0px;                 /* Прямые углы в стиль вашей поисковой строки */
+    padding: 6px 18px;                  /* Внутренние отступы */
+}
+
+/* Эффект при наведении мышки */
+QPushButton:hover {
+    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+}
+
+/* Эффект при нажатии (Шаг 3 из нашего плана) */
+QPushButton:pressed {
+    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
+    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
+}</string>
+      </property>
+      <property name="text">
+       <string>Назад</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="search_input">
+      <property name="minimumSize">
+       <size>
+        <width>250</width>
+        <height>63</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>10000</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>-1</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    background-color: rgb(210, 215, 211);
+    color: rgb(21, 27, 38);
+    border: none;
+    border-radius: 0px;
+    padding: 6px 15px;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 15px;
+    font-weight: bold;
+}
+QLineEdit:focus { outline: none; background-color: rgb(222, 227, 223); }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Поиск...</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_filters">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>63</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(45, 56, 76);  /* Тёмно-синий цвет, как у кнопок классов */
+    color: rgb(240, 213, 163);          /* Яркое золото для текста */
+    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
+    border-radius: 0px;                 /* Прямые углы в стиль вашей поисковой строки */
+    padding: 6px 18px;                  /* Внутренние отступы */
+}
+
+/* Эффект при наведении мышки */
+QPushButton:hover {
+    background-color: rgb(45, 56, 90);  /* Кнопка становится чуть светлее */
+}
+
+/* Эффект при нажатии (Шаг 3 из нашего плана) */
+QPushButton:pressed {
+    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
+    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="minimumSize">
+       <size>
+        <width>350</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Palatino Linotype</family>
+        <pointsize>23</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет самой плашки лейбла */
+color: rgb(240, 213, 163);          /* Яркое золото для букв шрифта */
+border: none;                       /* Убираем стандартные рамки Windows */</string>
+      </property>
+      <property name="text">
+       <string>Заклинания</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::PlainText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+   <zorder>search_input</zorder>
+   <zorder>btn_back</zorder>
+   <zorder>label</zorder>
+   <zorder>btn_filters</zorder>
+  </widget>
+  <widget class="QFrame" name="frame_filters">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>1387</x>
+     <y>60</y>
+     <width>281</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>281</width>
+     <height>291</height>
+    </size>
+   </property>
+   <widget class="QFrame" name="filters">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>281</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>281</width>
+      <height>291</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>281</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+    background-color: rgb(55, 60, 70);
+    
+    /* Увеличили скругление для более мягкого &quot;книжного&quot; вида */
+    border-radius: 10px; 
+    
+    /* Полное отключение любых рамок */
+    border: none !important;
+}
+
+/* Настройка для текстовых меток внутри этого фрейма */
+QFrame QLabel {
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::NoFrame</enum>
+    </property>
+    <widget class="QLabel" name="label_level">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>11</y>
+       <width>121</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(73, 85, 105);
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Уровень</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_school">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>51</y>
+       <width>121</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(73, 85, 105);
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Школа</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_time">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>90</y>
+       <width>121</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(73, 85, 105);
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Время</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_components">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>130</y>
+       <width>121</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(73, 85, 105);
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Компонеты</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_damage">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>169</y>
+       <width>121</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(73, 85, 105);
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Урон</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_ritual">
+     <property name="geometry">
+      <rect>
+       <x>241</x>
+       <y>255</y>
+       <width>26</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox {
+    background-color: transparent;      /* НАМЕРТВУ УБИРАЕМ ЛЮБОЙ ФОН ВОКРУГ ЧЕКБОКСА */
+    color: rgb(240, 213, 163);          /* Яркое золото для текста названия */
+    
+    font-family: &quot;Palatino Linotype&quot;;   /* Твой книжный фэнтези-шрифт */
+    font-size: 14px;
+    font-weight: bold;
+    spacing: 8px;                       /* Отступ между квадратиком и текстом */
+}
+
+/* НАСТРОЙКА КВАДРАТИКА (КОГДА ГАЛОЧКА НЕ СТОИТ) */
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    background-color: rgb(240, 213, 163); /* Квадратик залит твоим золотым цветом */
+    border: 1px solid rgb(240, 213, 163); /* Золотая аккуратная рамка */
+    border-radius: 4px;                  /* Скругление углов квадратика */
+}
+
+/* ======================================================== */
+/* 🎨 НАСТРОЙКА КВАДРАТИКА ПРИ НАЖАТИИ (КОГДА ГАЛОЧКА СТОИТ) */
+/* ======================================================== */
+QCheckBox::indicator:checked {
+    background-color: rgb(133, 146, 158);    /* Квадратик изнутри заливается тёмно-синим цветом */
+    border: 1px solid rgb(31, 39, 53);    /* Рамка подстраивается под синий цвет */
+    
+
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_ritual">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>250</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+    /* ТОТ САМЫЙ ГЛУБОКИЙ ТЁМНО-СИНИЙ ЦВЕТ ДЛЯ ФОНА ФРЕЙМА */
+    background-color: rgb(31, 39, 53);  
+    
+    /* РОСКОШНАЯ ЗОЛОТАЯ ОБВОДКА (Толщина 1px, сплошная линия, наше фирменное золото) */
+    border: 1px solid rgb(240, 213, 163);      
+    
+    /* НАДЁЖНОЕ СКРУГЛЕНИЕ УГЛОВ ПЛАШКИ */
+    border-radius: 4px;                 
+}
+
+/* АВТОМАТИЧЕСКАЯ НАСТРОЙКА ДЛЯ ВСЕХ НАДПИСЕЙ ВНУТРИ ЭТОГО СИНЕГО ФРЕЙМА */
+QFrame QLabel {
+    background-color: transparent;      
+    color: rgb(240, 213, 163);          /* Все буквы автоматически загорятся золотом */
+    /* Фикс: чтобы обводка фрейма не наследовалась текстовыми метками внутри */
+    border: none !important; 
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::NoFrame</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_concentration">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>210</y>
+       <width>121</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(73, 85, 105);
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Концентрация?</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_concentration">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>210</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+    /* ТОТ САМЫЙ ГЛУБОКИЙ ТЁМНО-СИНИЙ ЦВЕТ ДЛЯ ФОНА ФРЕЙМА */
+    background-color: rgb(31, 39, 53);  
+    
+    /* РОСКОШНАЯ ЗОЛОТАЯ ОБВОДКА (Толщина 1px, сплошная линия, наше фирменное золото) */
+    border: 1px solid rgb(240, 213, 163);      
+    
+    /* НАДЁЖНОЕ СКРУГЛЕНИЕ УГЛОВ ПЛАШКИ */
+    border-radius: 4px;                 
+}
+
+/* АВТОМАТИЧЕСКАЯ НАСТРОЙКА ДЛЯ ВСЕХ НАДПИСЕЙ ВНУТРИ ЭТОГО СИНЕГО ФРЕЙМА */
+QFrame QLabel {
+    background-color: transparent;      
+    color: rgb(240, 213, 163);          /* Все буквы автоматически загорятся золотом */
+    /* Фикс: чтобы обводка фрейма не наследовалась текстовыми метками внутри */
+    border: none !important; 
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::NoFrame</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_ritual">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>250</y>
+       <width>121</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(73, 85, 105);
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Ритуал</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_concentration">
+     <property name="geometry">
+      <rect>
+       <x>241</x>
+       <y>216</y>
+       <width>26</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox {
+    background-color: transparent;      /* НАМЕРТВУ УБИРАЕМ ЛЮБОЙ ФОН ВОКРУГ ЧЕКБОКСА */
+    color: rgb(240, 213, 163);          /* Яркое золото для текста названия */
+    
+    font-family: &quot;Palatino Linotype&quot;;   /* Твой книжный фэнтези-шрифт */
+    font-size: 14px;
+    font-weight: bold;
+    spacing: 8px;                       /* Отступ между квадратиком и текстом */
+}
+
+/* НАСТРОЙКА КВАДРАТИКА (КОГДА ГАЛОЧКА НЕ СТОИТ) */
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    background-color: rgb(240, 213, 163); /* Квадратик залит твоим золотым цветом */
+    border: 1px solid rgb(240, 213, 163); /* Золотая аккуратная рамка */
+    border-radius: 4px;                  /* Скругление углов квадратика */
+}
+
+/* ======================================================== */
+/* 🎨 НАСТРОЙКА КВАДРАТИКА ПРИ НАЖАТИИ (КОГДА ГАЛОЧКА СТОИТ) */
+/* ======================================================== */
+QCheckBox::indicator:checked {
+    background-color: rgb(133, 146, 158);    /* Квадратик изнутри заливается тёмно-синим цветом */
+    border: 1px solid rgb(31, 39, 53);    /* Рамка подстраивается под синий цвет */
+    
+
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_damage">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>170</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
+    border-radius: 4px;                  /* Скругление углов */
+    padding: 4px 10px;                   /* Внутренние отступы */
+    
+    color: rgb(240, 213, 163);           /* Золото для текста */
+    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
+    font-size: 14px;
+    font-weight: bold;
+
+    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
+    combobox-popup: 0;                   
+}
+
+/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: none;                  /* Убираем лишние полосы */
+}
+
+/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
+QComboBox::down-arrow {
+    image: none;                        
+    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
+    border-right: 5px solid transparent;
+    border-top: 6px solid rgb(240, 213, 163); 
+    width: 0px;
+    height: 0px;
+    margin-right: 2px;
+}
+
+/* ======================================================== */
+/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
+    
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    
+    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
+    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
+}
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+/* Настройка встроенной строки ввода для подсказки */
+QComboBox QLineEdit {
+    background: transparent;            /* Делаем подложку прозрачной */
+    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
+    border: none;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
+    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+}
+
+/* Эффект при наведении мышки на строчку вариантов */
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string notr="true">Все</string>
+     </property>
+     <property name="minimumContentsLength">
+      <number>30</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Дробящий</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Рубящий</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Колющий</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Звук</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Излучение</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Кислота</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Некротическая энергия</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Огонь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Психическая энергия</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Силовое поле</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Холод</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Электричество</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Яд</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_components">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>130</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
+    border-radius: 4px;                  /* Скругление углов */
+    padding: 4px 10px;                   /* Внутренние отступы */
+    
+    color: rgb(240, 213, 163);           /* Золото для текста */
+    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
+    font-size: 14px;
+    font-weight: bold;
+
+    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
+    combobox-popup: 0;                   
+}
+
+/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: none;                  /* Убираем лишние полосы */
+}
+
+/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
+QComboBox::down-arrow {
+    image: none;                        
+    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
+    border-right: 5px solid transparent;
+    border-top: 6px solid rgb(240, 213, 163); 
+    width: 0px;
+    height: 0px;
+    margin-right: 2px;
+}
+
+/* ======================================================== */
+/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
+    
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    
+    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
+    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
+}
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+/* Настройка встроенной строки ввода для подсказки */
+QComboBox QLineEdit {
+    background: transparent;            /* Делаем подложку прозрачной */
+    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
+    border: none;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
+    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+}
+
+/* Эффект при наведении мышки на строчку вариантов */
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>С</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>М</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В, С</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В, М</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>С, М</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В, С, М</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_level">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
+    border-radius: 4px;                  /* Скругление углов */
+    padding: 4px 10px;                   /* Внутренние отступы */
+    
+    color: rgb(240, 213, 163);           /* Золото для текста */
+    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
+    font-size: 14px;
+    font-weight: bold;
+
+    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
+    combobox-popup: 0;                   
+}
+
+/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: none;                  /* Убираем лишние полосы */
+}
+
+/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
+QComboBox::down-arrow {
+    image: none;                        
+    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
+    border-right: 5px solid transparent;
+    border-top: 6px solid rgb(240, 213, 163); 
+    width: 0px;
+    height: 0px;
+    margin-right: 2px;
+}
+
+/* ======================================================== */
+/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
+    
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    
+    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
+    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
+    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+}
+
+/* Эффект при наведении мышки на строчку вариантов */
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+/* Настройка встроенной строки ввода для подсказки */
+QComboBox QLineEdit {
+    background: transparent;            /* Делаем подложку прозрачной */
+    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
+    border: none;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 10px;
+    font-weight: bold;
+}
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
+    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+}
+
+/* Эффект при наведении мышки на строчку вариантов */
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+</string>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Заговор</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>9</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_school">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>50</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
+    border-radius: 4px;                  /* Скругление углов */
+    padding: 4px 10px;                   /* Внутренние отступы */
+    
+    color: rgb(240, 213, 163);           /* Золото для текста */
+    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
+    font-size: 14px;
+    font-weight: bold;
+
+    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
+    combobox-popup: 0;                   
+}
+
+/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: none;                  /* Убираем лишние полосы */
+}
+
+/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
+QComboBox::down-arrow {
+    image: none;                        
+    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
+    border-right: 5px solid transparent;
+    border-top: 6px solid rgb(240, 213, 163); 
+    width: 0px;
+    height: 0px;
+    margin-right: 2px;
+}
+
+/* ======================================================== */
+/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
+    
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    
+    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
+    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
+}
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+/* Настройка встроенной строки ввода для подсказки */
+QComboBox QLineEdit {
+    background: transparent;            /* Делаем подложку прозрачной */
+    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
+    border: none;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
+    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+}
+
+/* Эффект при наведении мышки на строчку вариантов */
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Воплощение</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ограждение</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Иллюзия</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Вызов</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Некромантия</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Преобразование</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Очарование</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Прорицание</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_time">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>90</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
+    border-radius: 4px;                  /* Скругление углов */
+    padding: 4px 10px;                   /* Внутренние отступы */
+    
+    color: rgb(240, 213, 163);           /* Золото для текста */
+    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
+    font-size: 14px;
+    font-weight: bold;
+
+    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
+    combobox-popup: 0;                   
+}
+
+/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: none;                  /* Убираем лишние полосы */
+}
+
+/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
+QComboBox::down-arrow {
+    image: none;                        
+    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
+    border-right: 5px solid transparent;
+    border-top: 6px solid rgb(240, 213, 163); 
+    width: 0px;
+    height: 0px;
+    margin-right: 2px;
+}
+
+/* ======================================================== */
+/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
+    
+    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    
+    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
+    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
+    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+}
+
+/* Эффект при наведении мышки на строчку вариантов */
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+/* Настройка встроенной строки ввода для подсказки */
+QComboBox QLineEdit {
+    background: transparent;            /* Делаем подложку прозрачной */
+    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
+    border: none;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 10px;
+    font-weight: bold;
+}
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
+    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+}
+
+/* Эффект при наведении мышки на строчку вариантов */
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
+    color: rgb(255, 223, 160);           /* Золото загорается ярче */
+}
+
+/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
+    color: rgb(255, 223, 160);
+}
+</string>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <property name="maxCount">
+      <number>9</number>
+     </property>
+     <property name="minimumContentsLength">
+      <number>13</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Действие</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Бонусное действие</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Реакция</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1 минута</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10 минут</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1 час</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8 часов</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>24 часа</string>
+      </property>
+     </item>
+    </widget>
+    <zorder>frame_ritual</zorder>
+    <zorder>label_level</zorder>
+    <zorder>label_school</zorder>
+    <zorder>label_time</zorder>
+    <zorder>label_components</zorder>
+    <zorder>label_damage</zorder>
+    <zorder>checkBox_ritual</zorder>
+    <zorder>label_concentration</zorder>
+    <zorder>frame_concentration</zorder>
+    <zorder>label_ritual</zorder>
+    <zorder>checkBox_concentration</zorder>
+    <zorder>comboBox_damage</zorder>
+    <zorder>comboBox_components</zorder>
+    <zorder>comboBox_level</zorder>
+    <zorder>comboBox_school</zorder>
+    <zorder>comboBox_time</zorder>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="mainContent">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>70</y>
+     <width>1920</width>
+     <height>1015</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1920</width>
+     <height>1015</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1920</width>
+     <height>1015</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::NoFrame</enum>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,3">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="leftContentPanel">
+      <property name="minimumSize">
+       <size>
+        <width>770</width>
+        <height>71</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#leftContentPanel {
+    background-color: rgb(133, 146, 158);
+    border: none;
+    border-right: 10px solid rgb(70, 83, 102);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QListWidget" name="listWidget">
+         <property name="font">
+          <font>
+           <family>Palatino Linotype</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QListWidget {
+    background-color: transparent;      /* Прозрачный фон списка */
+    border: none;                       /* Убираем внешние рамки */
+    outline: none;                      /* Отключаем пунктирные линии выбора */
+}
+
+/* Настройка внешнего вида элементов списка (строк с классами) */
+QListWidget::item {
+    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет плашки по умолчанию */
+    color: rgb(240, 213, 163);          /* Спокойное золото для текста */
+    border-radius: 8px;                 /* Скругление углов */
+    padding: 12px 20px;                 /* Внутренние отступы */
+    margin-bottom: 10px;                /* Расстояние между строками */
+    
+
+}
+
+/* Эффект при наведении мышки */
+QListWidget::item:hover {
+    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+}
+
+/* Эффект, когда класс в списке ВЫБРАН (на него нажали) */
+QListWidget::item:selected {
+    /* Фон остаётся вашим, тёмно-сине-стальным */
+    background-color: rgb(41, 52, 71);  
+    
+    /* ТОТ САМЫЙ ЭФФЕКТ: золото текста загорается ярче и насыщеннее! */
+    color: rgb(255, 223, 160);          
+}</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="rightContentPanel">
+      <property name="minimumSize">
+       <size>
+        <width>1160</width>
+        <height>1015</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1508</width>
+        <height>1015</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#rightContentPanel {
+    background-color: rgb(133, 146, 158);
+    border: none;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="3">
+       <item>
+        <widget class="QScrollArea" name="SpellsScrollArea">
+         <property name="styleSheet">
+          <string notr="true">/* Делаем саму область прокрутки и её холст прозрачными */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+#scrollAreaWidgetContents {
+    background-color: transparent;
+}
+
+/* ======================================================== */
+/* 🛠 НАСТРОЙКА ВЕРТИКАЛЬНОГО ПОЛЗУНКА (SCROLLBAR) */
+/* ======================================================== */
+
+/* 1. Дорожка, по которой двигается ползунок */
+QScrollBar:vertical {
+    background-color: rgb(233, 227, 212);  /* Чуть более плотный пергаментный оттенок, чтобы выделяться */
+    width: 10px;                         /* Аккуратная толщина линии */
+    margin: 0px 0px 0px 0px;
+    border-radius: 5px;                  /* Мягкое скругление дорожки */
+}
+
+/* 2. Сам бегунок (за который мы тянем мышкой) */
+QScrollBar::handle:vertical {
+    background-color: rgb(46, 64, 87);   /* Приглушённый стальной синий цвет (плотный и непрозрачный!) */
+    min-height: 30px;                    /* Чтобы ползунок не сжимался в крошечную точку */
+    border-radius: 5px;                  /* Круглые аккуратные края бегунка */
+}
+
+/* 3. Эффект при наведении курсора мыши */
+QScrollBar::handle:vertical:hover {
+    background-color: rgb(194, 150, 85); /* Загорается матовым D&amp;D золотом */
+}
+
+/* 4. Эффект, когда мы зажали ползунок кнопкой мыши */
+QScrollBar::handle:vertical:pressed {
+    background-color: rgb(114, 34, 43);  /* Становится благородным бордовым */
+}
+
+/* 5. Полностью убираем технические стрелочки Windows сверху и снизу */
+QScrollBar::sub-line:vertical, QScrollBar::add-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}</string>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1142</width>
+            <height>997</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4" stretch="2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>9</number>
+           </property>
+           <property name="topMargin">
+            <number>9</number>
+           </property>
+           <property name="rightMargin">
+            <number>9</number>
+           </property>
+           <property name="bottomMargin">
+            <number>9</number>
+           </property>
+           <item>
+            <widget class="QWidget" name="box2" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="topMargin">
+               <number>9</number>
+              </property>
+              <property name="rightMargin">
+               <number>9</number>
+              </property>
+              <property name="bottomMargin">
+               <number>9</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="Spell_name">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="textFormat">
+                 <enum>Qt::TextFormat::RichText</enum>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="Spell_description">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="textFormat">
+                 <enum>Qt::TextFormat::RichText</enum>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+   <zorder>rightContentPanel</zorder>
+   <zorder>leftContentPanel</zorder>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>770</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>770</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#frame {
+    background-color: rgb(133, 146, 158);
+    border: none;
+    border-right: 10px solid rgb(70, 83, 102);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::NoFrame</enum>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>mainContent</zorder>
+  <zorder>TopBar</zorder>
+  <zorder>frame_filters</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -143,14 +143,14 @@ class BackstoriesPage(BasePage):
 
             text = f"""
 {backstory_obj.description}<br>
-<b>Владение навыками:</b>{backstory_obj.possesion_skills}<br>
-<b>Владение инструментами:</b>{backstory_obj.possesion_instruments}<br>"""
+<b>Владение навыками: </b>{backstory_obj.possesion_skills}<br>
+<b>Владение инструментами: </b>{backstory_obj.possesion_instruments}<br>"""
 
             if backstory_obj.possesion_languages:
                 text += f"""{backstory_obj.possesion_languages}<br>"""
 
             text += f"""{backstory_obj.equipment}<br><br>
-<b>Умение:{backstory_obj.skill_name}</b><br>
+<b>Умение: {backstory_obj.skill_name}</b><br>
 {backstory_obj.skill_description}"""
 
             self.ui.Backstory_description.setText(text)

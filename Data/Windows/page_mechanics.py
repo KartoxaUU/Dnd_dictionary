@@ -137,7 +137,7 @@ class MechanicsPage(BasePage):
                                                         border: 1px solid #dee2e6;
                                                         border-radius: 8px;
                                                         padding: 15px;
-                                                        font-size: 15px;
+                                                        font-size: 17px;
                                                         color: #333;
                                                     }""")
             self.ui.Rule_description.setText(mechanic_obj.description)

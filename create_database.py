@@ -242,6 +242,7 @@ class Spell(Base):
     upper_level = Column(Text)
     concentration = Column(Boolean, default=False)
     ritual = Column(Boolean, default=False)
+    damage_types = Column(Text, default="[]")
 
     classes = relationship("Class", secondary='spell_class_association', back_populates='spells')
     subclasses = relationship("Subclass", secondary='spell_subclass_association', back_populates='spells')

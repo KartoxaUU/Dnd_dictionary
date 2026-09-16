@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, session
 from create_database import *
+import json
 
 class DataManager:
     """Управляет данными в бд"""
@@ -92,36 +93,38 @@ class DataManager:
         """Конкретный предмет"""
         return self.session.query(Item).filter(Item.name == name).first()
 
+    def get_spell_damage_types(self, spell_obj):
+        """Возвращает список типов урона заклинания"""
+        if not spell_obj or not spell_obj.damage_types:
+            return []
+        try:
+            return json.loads(spell_obj.damage_types)
+        except (json.JSONDecodeError, TypeError):
+            return []
+
+    def filter_spells_by_damage(self, spells, damage_types):
+        """Фильтрует список заклинаний по типам урона"""
+        if not damage_types:
+            return spells
+
+        result = []
+        for spell in spells:
+            spell_damage = self.get_spell_damage_types(spell)
+            if any(dt in spell_damage for dt in damage_types):
+                result.append(spell)
+        return result
+
     # Фильтры
 
     def filter_spells(self, **kwargs):
-        """
-                            Фильтрация заклинаний
-
-        Параметры:
-            search (str): поиск по имени или описанию
-            levels (list): список уровней (OR) — выбор нескольких
-            schools (list): список школ (OR) — выбор нескольких
-            class_names (list): список классов (OR) — выбор нескольких
-            subclass_names (list): список подклассов (OR) — выбор нескольких
-            concentration (bool): концентрация (Да/Нет)
-            ritual (bool): ритуал (Да/Нет)
-            components (list): список компонентов (OR) — В, С, М
-            is_custom (bool): кастомное/встроенное
-            sort_by (str): поле для сортировки
-        """
-
+        """Фильтрация заклинаний"""
         query = self.session.query(Spell)
-
-        if 'search' in kwargs and kwargs['search']:
-            s = kwargs['search']
-            query = query.filter(
-                Spell.name.contains(s),
-                        Spell.description.contains(s)
-            )
 
         if 'levels' in kwargs and kwargs['levels']:
             query = query.filter(Spell.level.in_(kwargs['levels']))
+
+        if 'time' in kwargs and kwargs['time']:
+            query = query.filter(Spell.time == kwargs['time'])
 
         if 'schools' in kwargs and kwargs['schools']:
             query = query.filter(Spell.school.in_(kwargs['schools']))
@@ -142,6 +145,15 @@ class DataManager:
             for comp in kwargs['components']:
                 query = query.filter(Spell.components.contains(comp))
 
+        if 'damage_types' in kwargs and kwargs['damage_types']:
+            damage_filters = []
+            for dt in kwargs['damage_types']:
+                damage_filters.append(Spell.damage_types.contains(dt))
+
+            if damage_filters:
+                from sqlalchemy import or_
+                query = query.filter(or_(*damage_filters))
+
         if 'is_custom' in kwargs and kwargs['is_custom']:
             query = query.filter(Spell.is_custom == kwargs['is_custom'])
 
@@ -152,10 +164,11 @@ class DataManager:
                 query = query.order_by(Spell.name.asc())
             elif kwargs['sort_by'] == 'school':
                 query = query.order_by(Spell.school.asc())
-            elif hasattr(Spell, kwargs['sort_by']):
-                query = query.order_by(getattr(Spell, kwargs['sort_by']))
 
         return query.all()
+
+        self.display_spells(filtred)
+        print(f"Найдено заклинаний: {len(filtred)}")
 
     def filter_items(self, **kwargs):
         """

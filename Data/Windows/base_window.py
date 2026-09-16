@@ -112,3 +112,16 @@ class BasePage(QWidget):
     def closeEvent(self, event):
         self.dm.close()
         event.accept()
+
+    def toggle_filters(self):
+        """Переключатель: показать/скрыть filters"""
+
+        if not hasattr(self.ui, 'filters'):
+            return
+
+        if self.ui.btn_filters.isChecked():
+            self.ui.filters.setVisible(True)
+            self.ui.frame_filters.setVisible(True)
+        else:
+            self.ui.filters.setVisible(False)
+            self.ui.frame_filters.setVisible(False)

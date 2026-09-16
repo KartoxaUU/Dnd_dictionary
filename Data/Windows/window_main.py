@@ -1,9 +1,10 @@
-from PySide6.QtWidgets import QMainWindow, QStackedWidget, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QMainWindow, QStackedWidget
 from Data.Windows.page_main import MainMenuPage
 from Data.Windows.page_classes import ClassesPage
 from Data.Windows.page_races import RacesPage
 from Data.Windows.page_mechanics import MechanicsPage
 from Data.Windows.page_backstrories import BackstoriesPage
+from Data.Windows.page_spells import SpellsPage
 
 
 class MainWindow(QMainWindow):
@@ -33,7 +34,7 @@ class MainWindow(QMainWindow):
             'main': MainMenuPage(self, self.show_page),
             'classes': ClassesPage(self, self.go_back),
             #'items': ItemsPage(self, self.show_page),
-            # 'spells': SpellsPage(self, self.show_page),
+            'spells': SpellsPage(self, self.go_back),
             'races': RacesPage(self, self.go_back),
             'backstories': BackstoriesPage(self, self.go_back),
             # 'monsters': MonstersPage(self, self.show_page),

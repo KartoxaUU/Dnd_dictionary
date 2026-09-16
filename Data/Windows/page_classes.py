@@ -64,6 +64,10 @@ class ClassesPage(BasePage):
         if hasattr(self.ui, 'Class_subclass'):
             print("Найден лейбл: Class_subclass")
 
+        if hasattr(self.ui, 'Box3'):
+            print("Найден бокс: Box3")
+            self.ui.Box3.setVisible(False)
+
     def load_classes(self):
         """Загружает список классов"""
 
@@ -253,6 +257,7 @@ class ClassesPage(BasePage):
         if hasattr(self.ui, 'Class_help2'):
             self.ui.Class_help2.clear()
             subclasses = self.dm.get_all_subclasses_by_class(class_obj)
+            self.ui.Box3.setVisible(True)
             if subclasses:
                 for subclass in subclasses:
                     item = QListWidgetItem(subclass.name)
@@ -308,7 +313,7 @@ class ClassesPage(BasePage):
 
             self.ui.Class_subclass.setStyleSheet("""
                             QLabel {
-                                background-color: #f8f9fa;
+                                background-color: rgb(248, 249, 250);
                                 border: 1px solid #dee2e6;
                                 border-radius: 8px;
                                 padding: 15px;
@@ -344,7 +349,7 @@ class ClassesPage(BasePage):
             )
 
             self.ui.Class_icon.setPixmap(pixmap)
-            self.ui.Class_icon.setScaledContents(False)
+            self.ui.Class_icon.setScaledContents(True)
             self.ui.Class_icon.setFixedSize(width, height)
             self.ui.Class_icon.setStyleSheet("""
                 QLabel {
