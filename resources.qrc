@@ -1,0 +1,6 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/icons">
+        <file>Data/Icons/filters_icon.png</file>
+    </qresource>
+</RCC>

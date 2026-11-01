@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1080</height>
+    <height>1106</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -240,37 +240,80 @@ border: none;                       /* Убираем стандартные р�
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QListWidget {
-    background-color: transparent;      /* Прозрачный фон списка */
-    border: none;                       /* Убираем внешние рамки */
-    outline: none;                      /* Отключаем пунктирные линии выбора */
+            <string notr="true">/* ======================================================== */
+/* 1. ИЗМЕНЕНО: ПРОЗРАЧНАЯ ПОДЛОЖКА СПИСКА                  */
+/* ======================================================== */
+QListWidget {
+    /* Полностью прозрачный фон */
+    background-color: transparent; 
+    
+    /* Сбрасываем нативный стиль Windows */
+    border-style: solid;
+    border: none !important;              
+    
+    /* Очистили отступы, чтобы плашки не сжимались внутри белого бокса */
+    padding: 0px;    
+    outline: 0 !important;                           
 }
 
-/* Настройка внешнего вида элементов списка (строк с классами) */
+/* ======================================================== */
+/* 2. НАСТРОЙКА ПЛАШЕК-ПОДКЛАССОВ ПО УМОЛЧАНИЮ              */
+/* ======================================================== */
 QListWidget::item {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет плашки по умолчанию */
-    color: rgb(240, 213, 163);          /* Спокойное золото для текста */
-    border-radius: 8px;                 /* Скругление углов */
-    padding: 12px 20px;                 /* Внутренние отступы */
-    margin-bottom: 10px;                /* Расстояние между строками */
+    background-color: rgb(31, 39, 53);  
+    color: rgb(240, 213, 163);          
+    border-radius: 6px;                 
+    padding: 10px 14px;                 
+    margin-bottom: 8px;                 
     
-
+    font-family: &quot;Palatino Linotype&quot;;   
+    font-size: 13px;
+    font-weight: bold;
+    
+    border: none !important;
 }
 
-/* Эффект при наведении мышки */
+/* ======================================================== */
+/* 3. ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA                          */
+/* ======================================================== */
 QListWidget::item:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+    background-color: rgb(50, 65, 87) !important;  
+    color: rgb(240, 213, 163) !important;
+    border: none !important;
 }
 
-/* Эффект, когда класс в списке ВЫБРАН (на него нажали) */
-QListWidget::item:selected {
-    /* Фон остаётся вашим, тёмно-сине-стальным */
-    background-color: rgb(41, 52, 71);  
+/* ======================================================== */
+/* 4. ЭФФЕКТ ПРИ ВЫДЕЛЕНИИ / НАЖАТИИ (ТЕМНЕЕТ)              */
+/* ======================================================== */
+QListWidget::item:selected, 
+QListWidget::item:selected:active,
+QListWidget::item:selected:focus {
+    /* Глубокий бархатный полуночный тон */
+    background-color: rgb(20, 26, 36) !important;  
     
-    /* ТОТ САМЫЙ ЭФФЕКТ: золото текста загорается ярче и насыщеннее! */
-    color: rgb(255, 223, 160);          
+    /* Приглушенное благородное золото для темного фонда */
+    color: rgb(230, 205, 155) !important; 
+    border: none !important;
+}
+
+/* ======================================================== */
+/* 5. ГЛОБАЛЬНЫЙ ПРЕДОХРАНИТЕЛЬ ДЛЯ ВЫДЕЛЕНИЯ QT            */
+/* ======================================================== */
+QListWidget {
+    selection-background-color: rgb(20, 26, 36);
+    selection-color: rgb(230, 205, 155);
 }</string>
            </property>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
@@ -376,7 +419,7 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>1124</width>
+              <width>1117</width>
               <height>6000</height>
              </rect>
             </property>
@@ -623,74 +666,89 @@ QPushButton:focus {
                       </font>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QListWidget {
+                      <string notr="true">/* ======================================================== */
+/* 1. НАСТРОЙКА САМОГО СПИСКА-КОНТЕЙНЕРА                    */
+/* ======================================================== */
+QListWidget {
     background-color: rgb(248, 249, 250); 
-    
-    /* Текст делаем тёмно-угольным, чтобы он идеально читался на светлом */
     color: rgb(40, 44, 52);           
     
-    border: none !important;              /* Полностью убираем рамку самого списка */
-    border-radius: 8px;                   /* Мягкие круглые углы */
-    padding: 12px 16px;    
+    /* ЖЕСТКИЙ ФИКС ДЛЯ WINDOWS: Сбрасываем нативный стиль, чтобы ожили hover и selected */
+    border-style: solid;
+    border: none !important;              
     
-    /* ФИКС ДЛЯ УНИЧТОЖЕНИЯ СИСТЕМНОЙ ОБВОДКИ ФОКУСА */
-    outline: 0;                           
+    border-radius: 8px;                   
+    padding: 12px 16px;    
+    outline: 0 !important;                           
 }
 
-/* Настройка внешнего вида плашек-подклассов */
+/* ======================================================== */
+/* 2. НАСТРОЙКА ПЛАШЕК-ПОДКЛАССОВ ПО УМОЛЧАНИЮ              */
+/* ======================================================== */
 QListWidget::item {
-    background-color: rgb(31, 39, 53);  /* Глубокий тёмно-синий фон по умолчанию */
-    color: rgb(240, 213, 163);          /* Спокойное золото для текста */
-    border-radius: 6px;                 /* Аккуратное скругление углов */
-    padding: 10px 14px;                 /* Внутренние отступы плашки */
-    margin-bottom: 8px;                 /* Расстояние между строчками подклассов */
+    background-color: rgb(31, 39, 53);  
+    color: rgb(240, 213, 163);          
+    border-radius: 6px;                 
+    padding: 10px 14px;                 
+    margin-bottom: 8px;                 
     
-    /* Фиксация вашего книжного фэнтези-шрифта */
     font-family: &quot;Palatino Linotype&quot;;   
     font-size: 13px;
     font-weight: bold;
     
-    /* ЗАЩИТА ОТ ОБВОДОК НА ЭЛЕМЕНТАХ */
     border: none !important;
 }
 
-/* Эффект при наведении курсора мыши на подкласс */
+/* ======================================================== */
+/* 3. ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA                          */
+/* ======================================================== */
 QListWidget::item:hover {
-    background-color: rgb(45, 56, 76);  /* Плашка становится капельку светлее */
+    background-color: rgb(50, 65, 87) !important;  
+    color: rgb(240, 213, 163) !important;
     border: none !important;
 }
 
-/* ПРИНУДИТЕЛЬНЫЙ ОБХОД БЛОКИРОВКИ QT ПРИ НАЖАТИИ */
+/* ======================================================== */
+/* 4. ИЗМЕНЕНО: ЭФФЕКТ ПРИ ВЫДЕЛЕНИИ / НАЖАТИИ (ТЕМНЕЕТ)    */
+/* ======================================================== */
 QListWidget::item:selected, 
 QListWidget::item:selected:active,
-QListWidget::item:selected:not(active) {
-    /* Тот самый приглушённый тёмно-сине-стальной цвет фона при нажатии */
-    background-color: rgb(41, 52, 71);  
+QListWidget::item:selected:focus {
+    /* Глубокий бархатный полуночный тон — заметно темнее базы */
+    background-color: rgb(20, 26, 36) !important;  
     
-    /* Золото букв принудительно загорается сочным и ярким светом */
-    color: rgb(255, 223, 160) !important; 
-    
-    /* ГАРАНТИЯ ОТСУТСТВИЯ ЛЮБЫХ КОНТУРОВ ПРИ ВЫДЕЛЕНИИ */
+    /* Приглушенное благородное золото для темного фона */
+    color: rgb(230, 205, 155) !important; 
     border: none !important;
 }
 
-/* Финальный предохранитель для текста внутри выделенной строки */
+/* ======================================================== */
+/* 5. ГЛОБАЛЬНЫЙ ПРЕДОХРАНИТЕЛЬ ДЛЯ ВЫДЕЛЕНИЯ QT            */
+/* ======================================================== */
 QListWidget {
-    selection-background-color: rgb(41, 52, 71);
-    selection-color: rgb(255, 223, 160);
-}
-
-</string>
+    selection-background-color: rgb(20, 26, 36);
+    selection-color: rgb(230, 205, 155);
+}</string>
                      </property>
                      <property name="verticalScrollBarPolicy">
-                      <enum>Qt::ScrollBarAsNeeded</enum>
+                      <enum>Qt::ScrollBarAlwaysOff</enum>
                      </property>
                      <property name="horizontalScrollBarPolicy">
-                      <enum>Qt::ScrollBarAsNeeded</enum>
+                      <enum>Qt::ScrollBarAlwaysOff</enum>
                      </property>
                      <property name="sizeAdjustPolicy">
-                      <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                      <enum>QAbstractScrollArea::AdjustToContents</enum>
                      </property>
+                     <item>
+                      <property name="text">
+                       <string>New Item</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>New Item</string>
+                      </property>
+                     </item>
                     </widget>
                    </item>
                    <item>

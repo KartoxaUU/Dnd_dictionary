@@ -98,14 +98,15 @@ QWidget {
 
 /* Эффект при наведении мышки */
 QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+       background-color:rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
 }
 
 /* Эффект при нажатии (Шаг 3 из нашего плана) */
 QPushButton:pressed {
     background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
     color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
-}</string>
+}
+</string>
         </property>
         <property name="text">
          <string>Назад</string>
@@ -130,6 +131,7 @@ QPushButton:pressed {
          <font>
           <family>Segoe UI</family>
           <pointsize>-1</pointsize>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -177,7 +179,7 @@ border: none;                       /* Убираем стандартные р�
          <string>                 Расы</string>
         </property>
         <property name="textFormat">
-         <enum>Qt::TextFormat::AutoText</enum>
+         <enum>Qt::PlainText</enum>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -193,10 +195,7 @@ border: none;                       /* Убираем стандартные р�
    <item>
     <widget class="QFrame" name="mainContent">
      <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,3">
       <property name="spacing">
@@ -230,10 +229,7 @@ border: none;                       /* Убираем стандартные р�
 }</string>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
@@ -245,37 +241,80 @@ border: none;                       /* Убираем стандартные р�
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QListWidget {
-    background-color: transparent;      /* Прозрачный фон списка */
-    border: none;                       /* Убираем внешние рамки */
-    outline: none;                      /* Отключаем пунктирные линии выбора */
+            <string notr="true">/* ======================================================== */
+/* 1. ИЗМЕНЕНО: ПРОЗРАЧНАЯ ПОДЛОЖКА СПИСКА                  */
+/* ======================================================== */
+QListWidget {
+    /* Полностью прозрачный фон */
+    background-color: transparent; 
+    
+    /* Сбрасываем нативный стиль Windows */
+    border-style: solid;
+    border: none !important;              
+    
+    /* Очистили отступы, чтобы плашки не сжимались внутри белого бокса */
+    padding: 0px;    
+    outline: 0 !important;                           
 }
 
-/* Настройка внешнего вида элементов списка (строк с классами) */
+/* ======================================================== */
+/* 2. НАСТРОЙКА ПЛАШЕК-ПОДКЛАССОВ ПО УМОЛЧАНИЮ              */
+/* ======================================================== */
 QListWidget::item {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет плашки по умолчанию */
-    color: rgb(240, 213, 163);          /* Спокойное золото для текста */
-    border-radius: 8px;                 /* Скругление углов */
-    padding: 12px 20px;                 /* Внутренние отступы */
-    margin-bottom: 10px;                /* Расстояние между строками */
+    background-color: rgb(31, 39, 53);  
+    color: rgb(240, 213, 163);          
+    border-radius: 6px;                 
+    padding: 10px 14px;                 
+    margin-bottom: 8px;                 
     
-
+    font-family: &quot;Palatino Linotype&quot;;   
+    font-size: 13px;
+    font-weight: bold;
+    
+    border: none !important;
 }
 
-/* Эффект при наведении мышки */
+/* ======================================================== */
+/* 3. ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA                          */
+/* ======================================================== */
 QListWidget::item:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+    background-color: rgb(50, 65, 87) !important;  
+    color: rgb(240, 213, 163) !important;
+    border: none !important;
 }
 
-/* Эффект, когда класс в списке ВЫБРАН (на него нажали) */
-QListWidget::item:selected {
-    /* Фон остаётся вашим, тёмно-сине-стальным */
-    background-color: rgb(41, 52, 71);  
+/* ======================================================== */
+/* 4. ЭФФЕКТ ПРИ ВЫДЕЛЕНИИ / НАЖАТИИ (ТЕМНЕЕТ)              */
+/* ======================================================== */
+QListWidget::item:selected, 
+QListWidget::item:selected:active,
+QListWidget::item:selected:focus {
+    /* Глубокий бархатный полуночный тон */
+    background-color: rgb(20, 26, 36) !important;  
     
-    /* ТОТ САМЫЙ ЭФФЕКТ: золото текста загорается ярче и насыщеннее! */
-    color: rgb(255, 223, 160);          
+    /* Приглушенное благородное золото для темного фонда */
+    color: rgb(230, 205, 155) !important; 
+    border: none !important;
+}
+
+/* ======================================================== */
+/* 5. ГЛОБАЛЬНЫЙ ПРЕДОХРАНИТЕЛЬ ДЛЯ ВЫДЕЛЕНИЯ QT            */
+/* ======================================================== */
+QListWidget {
+    selection-background-color: rgb(20, 26, 36);
+    selection-color: rgb(230, 205, 155);
 }</string>
            </property>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
@@ -290,10 +329,7 @@ QListWidget::item:selected {
 }</string>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3" stretch="3">
          <item>
@@ -357,8 +393,8 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>1133</width>
-              <height>1000</height>
+              <width>1134</width>
+              <height>1002</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,2">

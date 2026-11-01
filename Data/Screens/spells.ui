@@ -167,26 +167,56 @@ QLineEdit:focus { outline: none; background-color: rgb(222, 227, 223); }</string
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
-    background-color: rgb(45, 56, 76);  /* Тёмно-синий цвет, как у кнопок классов */
-    color: rgb(240, 213, 163);          /* Яркое золото для текста */
-    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
-    border-radius: 0px;                 /* Прямые углы в стиль вашей поисковой строки */
-    padding: 6px 18px;                  /* Внутренние отступы */
+    /* Твой основной глубокий матовый цвет */
+    background-color: rgb(61, 75, 99);  
+    
+    /* Фирменное золото для текста */
+    color: rgb(240, 213, 163);          
+    font-family: &quot;Palatino Linotype&quot;;
+    font-weight: bold;
+    
+    /* Полное удаление всех рамок и контуров */
+    border: none !important;                       
+    outline: none !important;
+    
+    border-radius: 0px; /* Легкое скругление для аккуратного вида */
+    padding: 0px 0px;                  
 }
 
-/* Эффект при наведении мышки */
+/* Эффект при наведении курсора мыши */
 QPushButton:hover {
-    background-color: rgb(45, 56, 90);  /* Кнопка становится чуть светлее */
+    /* Шаг вверх (+12): мягкий, едва заметный блик из той же гаммы */
+    background-color: rgb(73, 87, 111);  
+    color: rgb(255, 223, 160); /* Текст чуть подсвечивается */
 }
 
-/* Эффект при нажатии (Шаг 3 из нашего плана) */
+/* Эффект в момент самого клика (зажатия мыши) */
 QPushButton:pressed {
-    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
-    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
+    /* Шаг вниз (-13): цвет плавно уходит в глубокий, бархатный тон той же стали */
+    background-color: rgb(48, 59, 79);  
+    color: rgb(220, 195, 148);
+}
+
+/* КОГДА КНОПКА ВКЛЮЧЕНА (Зафиксирована в активном режиме) */
+QPushButton:checked {
+    /* Удерживает благородный глубокий тон, показывая, что фильтры открыты */
+    background-color: rgb(48, 59, 79);  
+    color: rgb(255, 223, 160);          
+    border: none !important;
 }</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/icons/Data/Icons/filters_icon.png</normaloff>:/icons/Data/Icons/filters_icon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>48</width>
+        <height>48</height>
+       </size>
       </property>
       <property name="checkable">
        <bool>true</bool>
@@ -306,7 +336,7 @@ QFrame QLabel {
      <property name="styleSheet">
       <string notr="true">QLabel {
     /* Заливка цветом с картинки */
-    background-color: rgb(73, 85, 105);
+    background-color: rgb(31, 39, 53);  
     
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
@@ -339,7 +369,7 @@ QFrame QLabel {
      <property name="styleSheet">
       <string notr="true">QLabel {
     /* Заливка цветом с картинки */
-    background-color: rgb(73, 85, 105);
+    background-color: rgb(31, 39, 53);  
     
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
@@ -354,8 +384,7 @@ QFrame QLabel {
     
     /* Защита от системных рамок */
     border: none !important;
-}
-</string>
+}</string>
      </property>
      <property name="text">
       <string>Школа</string>
@@ -373,7 +402,7 @@ QFrame QLabel {
      <property name="styleSheet">
       <string notr="true">QLabel {
     /* Заливка цветом с картинки */
-    background-color: rgb(73, 85, 105);
+    background-color: rgb(31, 39, 53);  
     
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
@@ -406,7 +435,7 @@ QFrame QLabel {
      <property name="styleSheet">
       <string notr="true">QLabel {
     /* Заливка цветом с картинки */
-    background-color: rgb(73, 85, 105);
+    background-color: rgb(31, 39, 53);  
     
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
@@ -439,7 +468,7 @@ QFrame QLabel {
      <property name="styleSheet">
       <string notr="true">QLabel {
     /* Заливка цветом с картинки */
-    background-color: rgb(73, 85, 105);
+    background-color: rgb(31, 39, 53);  
     
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
@@ -548,7 +577,7 @@ QFrame QLabel {
      <property name="styleSheet">
       <string notr="true">QLabel {
     /* Заливка цветом с картинки */
-    background-color: rgb(73, 85, 105);
+    background-color: rgb(31, 39, 53);  
     
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
@@ -566,7 +595,7 @@ QFrame QLabel {
 }</string>
      </property>
      <property name="text">
-      <string>Концентрация?</string>
+      <string>Концентрация</string>
      </property>
     </widget>
     <widget class="QFrame" name="frame_concentration">
@@ -614,7 +643,7 @@ QFrame QLabel {
      <property name="styleSheet">
       <string notr="true">QLabel {
     /* Заливка цветом с картинки */
-    background-color: rgb(73, 85, 105);
+    background-color: rgb(31, 39, 53);  
     
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
@@ -678,20 +707,14 @@ QCheckBox::indicator:checked {
       <string/>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_damage">
+    <widget class="QComboBox" name="comboBox_components">
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>170</y>
+       <y>130</y>
        <width>130</width>
        <height>31</height>
       </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
@@ -706,101 +729,995 @@ QCheckBox::indicator:checked {
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">QComboBox {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
-    border-radius: 4px;                  /* Скругление углов */
-    padding: 4px 10px;                   /* Внутренние отступы */
+      <string notr="true">/* ======================================================== */
+/* ТВОЙ КОД (БАЗОВАЯ ПЛАШКА)                                */
+/* ======================================================== */
+QComboBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
     
-    color: rgb(240, 213, 163);           /* Золото для текста */
-    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;                  
+    padding: 4px 26px 4px 10px;          
+    
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
     font-size: 14px;
     font-weight: bold;
-
-    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
     combobox-popup: 0;                   
 }
 
-/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 24px;
-    border-left: none;                  /* Убираем лишние полосы */
-}
-
-/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
-QComboBox::down-arrow {
-    image: none;                        
-    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
-    border-right: 5px solid transparent;
-    border-top: 6px solid rgb(240, 213, 163); 
-    width: 0px;
-    height: 0px;
-    margin-right: 2px;
-}
-
 /* ======================================================== */
-/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
+/* ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
 /* ======================================================== */
 QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
     
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
     border-radius: 4px;
-    outline: none;
+    outline: none;                         /* Уничтожаем рамку фокуса */
     padding: 4px;
-    
-    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
-    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
-}
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-/* Настройка встроенной строки ввода для подсказки */
-QComboBox QLineEdit {
-    background: transparent;            /* Делаем подложку прозрачной */
-    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
-    border: none;
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 10px;
-    font-weight: bold;
+    min-width: 160px;                      
 }
 
 /* Настройка самих строчек списка вариантов */
 QComboBox QAbstractItemView::item {
-    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
-    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
+    padding: 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
 }
 
-/* Эффект при наведении мышки на строчку вариантов */
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
 QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}
+
+/* ======================================================== */
+/* ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
+/* ======================================================== */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
+    width: 10px;                           /* Тонкий и аккуратным */
+    margin: 0px;
+    border: none;
+}
+
+/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background-color: rgb(35, 57, 92);     
+    min-height: 20px;
+    border-radius: 4px;                    
+}
+
+/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
+    background-color: rgb(52, 115, 186);   
+}
+
+/* Уничтожение стрелочек сверху и снизу у скроллбара */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}========= */
+/* 3. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    
+    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
+    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
+    padding: 6px 20px 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
 }</string>
      </property>
      <property name="editable">
       <bool>false</bool>
      </property>
      <property name="currentText">
-      <string notr="true">Все</string>
+      <string>Все</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>С</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>М</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В, С</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В, М</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>С, М</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>В, С, М</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_school">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>50</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/* ======================================================== */
+/* ТВОЙ КОД (БАЗОВАЯ ПЛАШКА)                                */
+/* ======================================================== */
+QComboBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;                  
+    padding: 4px 26px 4px 10px;          
+    
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    combobox-popup: 0;                   
+}
+
+/* ======================================================== */
+/* ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    min-width: 160px;                      
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}
+
+/* ======================================================== */
+/* ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
+/* ======================================================== */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
+    width: 10px;                           /* Тонкий и аккуратным */
+    margin: 0px;
+    border: none;
+}
+
+/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background-color: rgb(35, 57, 92);     
+    min-height: 20px;
+    border-radius: 4px;                    
+}
+
+/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
+    background-color: rgb(52, 115, 186);   
+}
+
+/* Уничтожение стрелочек сверху и снизу у скроллбара */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}/* ======================================================== */
+/* ТВОЙ КОД (БАЗОВАЯ ПЛАШКА)                                */
+/* ======================================================== */
+QComboBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;                  
+    padding: 4px 26px 4px 10px;          
+    
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    combobox-popup: 0;                   
+}
+
+/* ======================================================== */
+/* ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    min-width: 160px;                      
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}
+
+/* ======================================================== */
+/* ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
+/* ======================================================== */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
+    width: 10px;                           /* Тонкий и аккуратным */
+    margin: 0px;
+    border: none;
+}
+
+/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background-color: rgb(35, 57, 92);     
+    min-height: 20px;
+    border-radius: 4px;                    
+}
+
+/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
+    background-color: rgb(52, 115, 186);   
+}
+
+/* Уничтожение стрелочек сверху и снизу у скроллбара */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+======================================================== */
+/* 3. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    
+    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
+    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
+    padding: 6px 20px 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Воплощение</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ограждение</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Иллюзия</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Вызов</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Некромантия</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Преобразование</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Очарование</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Прорицание</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_time">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>90</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/* ======================================================== */
+/* ТВОЙ КОД (БАЗОВАЯ ПЛАШКА)                                */
+/* ======================================================== */
+QComboBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;
+    padding: 4px 26px 4px 8px;                  
+    
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    combobox-popup: 0;                   
+}
+
+/* ======================================================== */
+/* ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    min-width: 200px;                      
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}
+
+/* ======================================================== */
+/* ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
+/* ======================================================== */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
+    width: 10px;                           /* Тонкий и аккуратным */
+    margin: 0px;
+    border: none;
+}
+
+/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background-color: rgb(35, 57, 92);     
+    min-height: 20px;
+    border-radius: 4px;                    
+}
+
+/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
+    background-color: rgb(52, 115, 186);   
+}
+
+/* Уничтожение стрелочек сверху и снизу у скроллбара */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+======================================================== */
+/* 3. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    
+    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
+    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
+    padding: 6px 20px 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}</string>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <property name="maxVisibleItems">
+      <number>8</number>
+     </property>
+     <property name="maxCount">
+      <number>9</number>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
      </property>
      <property name="minimumContentsLength">
-      <number>30</number>
+      <number>13</number>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Действие</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Бонусное действие</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Реакция</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1 минута</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10 минут</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1 час</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8 часов</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>24 часа</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_level">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/* ======================================================== */
+/* ТВОЙ КОД (БАЗОВАЯ ПЛАШКА)                                */
+/* ======================================================== */
+QComboBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;                  
+    padding: 4px 26px 4px 8px;          
+    
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    combobox-popup: 0;                   
+}
+
+/* ======================================================== */
+/* ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    min-width: 160px;                      
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}
+
+/* ======================================================== */
+/* ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
+/* ======================================================== */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
+    width: 10px;                           /* Тонкий и аккуратным */
+    margin: 0px;
+    border: none;
+}
+
+/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background-color: rgb(35, 57, 92);     
+    min-height: 20px;
+    border-radius: 4px;                    
+}
+
+/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
+    background-color: rgb(52, 115, 186);   
+}
+
+/* Уничтожение стрелочек сверху и снизу у скроллбара */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+======================================================== */
+/* 3. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    
+    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
+    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
+    padding: 6px 20px 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}</string>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Все</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Заговор</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>9</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_damage">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>170</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>130</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/* ======================================================== */
+/* ТВОЙ КОД (БАЗОВАЯ ПЛАШКА)                                */
+/* ======================================================== */
+QComboBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;                  
+    padding: 4px 26px 4px 8px;          
+    
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    combobox-popup: 0;                   
+}
+
+/* ======================================================== */
+/* ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    min-width: 270px;                      
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    padding: 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}
+
+/* ======================================================== */
+/* ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
+/* ======================================================== */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
+    width: 10px;                           /* Тонкий и аккуратным */
+    margin: 0px;
+    border: none;
+}
+
+/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background-color: rgb(35, 57, 92);     
+    min-height: 20px;
+    border-radius: 4px;                    
+}
+
+/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
+    background-color: rgb(52, 115, 186);   
+}
+
+/* Уничтожение стрелочек сверху и снизу у скроллбара */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+======================================================== */
+/* 3. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    
+    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
+    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
+    padding: 6px 20px 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}</string>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <property name="currentText">
+      <string>Все</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
      </property>
      <item>
       <property name="text">
@@ -873,686 +1790,7 @@ QComboBox QAbstractItemView::item:selected {
       </property>
      </item>
     </widget>
-    <widget class="QComboBox" name="comboBox_components">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>130</y>
-       <width>130</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>130</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>130</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QComboBox {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
-    border-radius: 4px;                  /* Скругление углов */
-    padding: 4px 10px;                   /* Внутренние отступы */
-    
-    color: rgb(240, 213, 163);           /* Золото для текста */
-    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
-    font-size: 14px;
-    font-weight: bold;
-
-    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
-    combobox-popup: 0;                   
-}
-
-/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 24px;
-    border-left: none;                  /* Убираем лишние полосы */
-}
-
-/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
-QComboBox::down-arrow {
-    image: none;                        
-    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
-    border-right: 5px solid transparent;
-    border-top: 6px solid rgb(240, 213, 163); 
-    width: 0px;
-    height: 0px;
-    margin-right: 2px;
-}
-
-/* ======================================================== */
-/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
-/* ======================================================== */
-QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
-    
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
-    border-radius: 4px;
-    outline: none;
-    padding: 4px;
-    
-    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
-    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
-}
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-/* Настройка встроенной строки ввода для подсказки */
-QComboBox QLineEdit {
-    background: transparent;            /* Делаем подложку прозрачной */
-    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
-    border: none;
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-/* Настройка самих строчек списка вариантов */
-QComboBox QAbstractItemView::item {
-    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
-    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
-}
-
-/* Эффект при наведении мышки на строчку вариантов */
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}</string>
-     </property>
-     <property name="editable">
-      <bool>false</bool>
-     </property>
-     <property name="currentText">
-      <string>Все</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>Все</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>В</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>С</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>М</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>В, С</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>В, М</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>С, М</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>В, С, М</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QComboBox" name="comboBox_level">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>10</y>
-       <width>130</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>130</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>130</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QComboBox {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
-    border-radius: 4px;                  /* Скругление углов */
-    padding: 4px 10px;                   /* Внутренние отступы */
-    
-    color: rgb(240, 213, 163);           /* Золото для текста */
-    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
-    font-size: 14px;
-    font-weight: bold;
-
-    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
-    combobox-popup: 0;                   
-}
-
-/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 24px;
-    border-left: none;                  /* Убираем лишние полосы */
-}
-
-/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
-QComboBox::down-arrow {
-    image: none;                        
-    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
-    border-right: 5px solid transparent;
-    border-top: 6px solid rgb(240, 213, 163); 
-    width: 0px;
-    height: 0px;
-    margin-right: 2px;
-}
-
-/* ======================================================== */
-/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
-/* ======================================================== */
-QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
-    
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
-    border-radius: 4px;
-    outline: none;
-    padding: 4px;
-    
-    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
-    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
-}
-
-/* Настройка самих строчек списка вариантов */
-QComboBox QAbstractItemView::item {
-    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
-    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
-}
-
-/* Эффект при наведении мышки на строчку вариантов */
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-/* Настройка встроенной строки ввода для подсказки */
-QComboBox QLineEdit {
-    background: transparent;            /* Делаем подложку прозрачной */
-    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
-    border: none;
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 10px;
-    font-weight: bold;
-}
-QComboBox QAbstractItemView::item {
-    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
-    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
-}
-
-/* Эффект при наведении мышки на строчку вариантов */
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-</string>
-     </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-     <property name="currentText">
-      <string>Все</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>Все</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Заговор</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>2</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>3</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>4</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>5</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>6</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>7</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>8</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>9</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QComboBox" name="comboBox_school">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>50</y>
-       <width>130</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>130</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>130</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QComboBox {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
-    border-radius: 4px;                  /* Скругление углов */
-    padding: 4px 10px;                   /* Внутренние отступы */
-    
-    color: rgb(240, 213, 163);           /* Золото для текста */
-    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
-    font-size: 14px;
-    font-weight: bold;
-
-    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
-    combobox-popup: 0;                   
-}
-
-/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 24px;
-    border-left: none;                  /* Убираем лишние полосы */
-}
-
-/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
-QComboBox::down-arrow {
-    image: none;                        
-    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
-    border-right: 5px solid transparent;
-    border-top: 6px solid rgb(240, 213, 163); 
-    width: 0px;
-    height: 0px;
-    margin-right: 2px;
-}
-
-/* ======================================================== */
-/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
-/* ======================================================== */
-QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
-    
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
-    border-radius: 4px;
-    outline: none;
-    padding: 4px;
-    
-    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
-    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
-}
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-/* Настройка встроенной строки ввода для подсказки */
-QComboBox QLineEdit {
-    background: transparent;            /* Делаем подложку прозрачной */
-    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
-    border: none;
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-
-/* Настройка самих строчек списка вариантов */
-QComboBox QAbstractItemView::item {
-    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
-    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
-}
-
-/* Эффект при наведении мышки на строчку вариантов */
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}</string>
-     </property>
-     <property name="editable">
-      <bool>false</bool>
-     </property>
-     <property name="currentText">
-      <string>Все</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>Все</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Воплощение</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Ограждение</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Иллюзия</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Вызов</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Некромантия</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Преобразование</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Очарование</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Прорицание</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QComboBox" name="comboBox_time">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>90</y>
-       <width>130</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>130</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>130</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QComboBox {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий DnD фон плашки */
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка */
-    border-radius: 4px;                  /* Скругление углов */
-    padding: 4px 10px;                   /* Внутренние отступы */
-    
-    color: rgb(240, 213, 163);           /* Золото для текста */
-    font-family: &quot;Palatino Linotype&quot;;    /* Книжный шрифт */
-    font-size: 14px;
-    font-weight: bold;
-
-    /* СЕКРЕТНЫЙ ФИКС QT: Разрешает выпадающему меню быть шире самой кнопки! */
-    combobox-popup: 0;                   
-}
-
-/* 2. НАСТРОЙКА ЗОНЫ СТРЕЛОЧКИ СПРАВА */
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 24px;
-    border-left: none;                  /* Убираем лишние полосы */
-}
-
-/* НАДЁЖНЫЙ ВСТРОЕННЫЙ МЕТОД ДЛЯ СТРЕЛОЧКИ */
-QComboBox::down-arrow {
-    image: none;                        
-    border-left: 5px solid transparent;  /* Золотой треугольник стрелочки */
-    border-right: 5px solid transparent;
-    border-top: 6px solid rgb(240, 213, 163); 
-    width: 0px;
-    height: 0px;
-    margin-right: 2px;
-}
-
-/* ======================================================== */
-/* 🎨 НАСТРОЙКА ВСПЛЫВАЮЩЕГО ОКНА С ВАРИАНТАМИ ВЫБОРА        */
-/* ======================================================== */
-QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);   /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);           /* Золотые строчки вариантов */
-    
-    border: 1px solid rgb(240, 213, 163); /* Золотая рамка вокруг списка */
-    border-radius: 4px;
-    outline: none;
-    padding: 4px;
-    
-    /* ФИКС ДЛЯ ЗАЩИТЫ ДЛИННОГО ТЕКСТА (&quot;ПРЕОБРАЗОВАНИЕ&quot;) */
-    min-width: 160px;                    /* Принудительно раздуваем ширину выпадающей плашки */
-}
-
-/* Настройка самих строчек списка вариантов */
-QComboBox QAbstractItemView::item {
-    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
-    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
-}
-
-/* Эффект при наведении мышки на строчку вариантов */
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-/* Настройка встроенной строки ввода для подсказки */
-QComboBox QLineEdit {
-    background: transparent;            /* Делаем подложку прозрачной */
-    color: rgb(240, 213, 163);          /* Фирменное золото для текста подсказки */
-    border: none;
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 10px;
-    font-weight: bold;
-}
-QComboBox QAbstractItemView::item {
-    padding: 6px 12px;                   /* Комфортные отступы вокруг слов */
-    min-height: 24px;                    /* Высота строк, чтобы буквы не слипались */
-}
-
-/* Эффект при наведении мышки на строчку вариантов */
-QComboBox QAbstractItemView::item:hover {
-    background-color: rgb(45, 56, 76);   /* Строчка становится чуть светлее */
-    color: rgb(255, 223, 160);           /* Золото загорается ярче */
-}
-
-/* Настройка внешнего вида уже выбранного варианта в открытом меню */
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(41, 52, 71);   /* Твой красивый сине-стальной цвет */
-    color: rgb(255, 223, 160);
-}
-</string>
-     </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-     <property name="currentText">
-      <string>Все</string>
-     </property>
-     <property name="maxCount">
-      <number>9</number>
-     </property>
-     <property name="minimumContentsLength">
-      <number>13</number>
-     </property>
-     <item>
-      <property name="text">
-       <string>Все</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Действие</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Бонусное действие</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Реакция</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>1 минута</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>10 минут</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>1 час</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>8 часов</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>24 часа</string>
-      </property>
-     </item>
-    </widget>
+    <zorder>frame_concentration</zorder>
     <zorder>frame_ritual</zorder>
     <zorder>label_level</zorder>
     <zorder>label_school</zorder>
@@ -1561,14 +1799,13 @@ QComboBox QAbstractItemView::item:selected {
     <zorder>label_damage</zorder>
     <zorder>checkBox_ritual</zorder>
     <zorder>label_concentration</zorder>
-    <zorder>frame_concentration</zorder>
     <zorder>label_ritual</zorder>
     <zorder>checkBox_concentration</zorder>
-    <zorder>comboBox_damage</zorder>
     <zorder>comboBox_components</zorder>
-    <zorder>comboBox_level</zorder>
     <zorder>comboBox_school</zorder>
     <zorder>comboBox_time</zorder>
+    <zorder>comboBox_level</zorder>
+    <zorder>comboBox_damage</zorder>
    </widget>
   </widget>
   <widget class="QFrame" name="mainContent">
@@ -1639,37 +1876,80 @@ QComboBox QAbstractItemView::item:selected {
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QListWidget {
-    background-color: transparent;      /* Прозрачный фон списка */
-    border: none;                       /* Убираем внешние рамки */
-    outline: none;                      /* Отключаем пунктирные линии выбора */
+          <string notr="true">/* ======================================================== */
+/* 1. ИЗМЕНЕНО: ПРОЗРАЧНАЯ ПОДЛОЖКА СПИСКА                  */
+/* ======================================================== */
+QListWidget {
+    /* Полностью прозрачный фон */
+    background-color: transparent; 
+    
+    /* Сбрасываем нативный стиль Windows */
+    border-style: solid;
+    border: none !important;              
+    
+    /* Очистили отступы, чтобы плашки не сжимались внутри белого бокса */
+    padding: 0px;    
+    outline: 0 !important;                           
 }
 
-/* Настройка внешнего вида элементов списка (строк с классами) */
+/* ======================================================== */
+/* 2. НАСТРОЙКА ПЛАШЕК-ПОДКЛАССОВ ПО УМОЛЧАНИЮ              */
+/* ======================================================== */
 QListWidget::item {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет плашки по умолчанию */
-    color: rgb(240, 213, 163);          /* Спокойное золото для текста */
-    border-radius: 8px;                 /* Скругление углов */
-    padding: 12px 20px;                 /* Внутренние отступы */
-    margin-bottom: 10px;                /* Расстояние между строками */
+    background-color: rgb(31, 39, 53);  
+    color: rgb(240, 213, 163);          
+    border-radius: 6px;                 
+    padding: 10px 14px;                 
+    margin-bottom: 8px;                 
     
-
+    font-family: &quot;Palatino Linotype&quot;;   
+    font-size: 13px;
+    font-weight: bold;
+    
+    border: none !important;
 }
 
-/* Эффект при наведении мышки */
+/* ======================================================== */
+/* 3. ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA                          */
+/* ======================================================== */
 QListWidget::item:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+    background-color: rgb(50, 65, 87) !important;  
+    color: rgb(240, 213, 163) !important;
+    border: none !important;
 }
 
-/* Эффект, когда класс в списке ВЫБРАН (на него нажали) */
-QListWidget::item:selected {
-    /* Фон остаётся вашим, тёмно-сине-стальным */
-    background-color: rgb(41, 52, 71);  
+/* ======================================================== */
+/* 4. ЭФФЕКТ ПРИ ВЫДЕЛЕНИИ / НАЖАТИИ (ТЕМНЕЕТ)              */
+/* ======================================================== */
+QListWidget::item:selected, 
+QListWidget::item:selected:active,
+QListWidget::item:selected:focus {
+    /* Глубокий бархатный полуночный тон */
+    background-color: rgb(20, 26, 36) !important;  
     
-    /* ТОТ САМЫЙ ЭФФЕКТ: золото текста загорается ярче и насыщеннее! */
-    color: rgb(255, 223, 160);          
+    /* Приглушенное благородное золото для темного фонда */
+    color: rgb(230, 205, 155) !important; 
+    border: none !important;
+}
+
+/* ======================================================== */
+/* 5. ГЛОБАЛЬНЫЙ ПРЕДОХРАНИТЕЛЬ ДЛЯ ВЫДЕЛЕНИЯ QT            */
+/* ======================================================== */
+QListWidget {
+    selection-background-color: rgb(20, 26, 36);
+    selection-color: rgb(230, 205, 155);
 }</string>
          </property>
+         <item>
+          <property name="text">
+           <string>New Item</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>New Item</string>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>
@@ -1819,7 +2099,7 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
                  <string/>
                 </property>
                 <property name="textFormat">
-                 <enum>Qt::TextFormat::RichText</enum>
+                 <enum>Qt::TextFormat::PlainText</enum>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>

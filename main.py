@@ -1,6 +1,11 @@
 import sys
+import rc_resources
+
+from PySide6.QtGui import QPixmap
+
 from PySide6.QtWidgets import QApplication, QStyleFactory
 from Data.Windows.window_main import MainWindow
+
 
 
 def main():

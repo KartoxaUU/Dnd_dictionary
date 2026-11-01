@@ -15,6 +15,7 @@ class SpellsPage(BasePage):
         self.setup_filters()
         self.load_spells()
 
+
     def setup_ui(self):
         """Подключаем кнопки"""
 

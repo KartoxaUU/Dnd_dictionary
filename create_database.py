@@ -183,12 +183,12 @@ class Monster(Base):
     __tablename__ = 'monsters'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False, unique=True)
+    name = Column(String(100), nullable=False, unique=True)
     size = Column(String(50))
     tipe = Column(String(50))
     hits = Column(String(20))
-    armor_class = Column(Integer)
-    speed = Column(String(50))
+    armor_class = Column(String(20))
+    speed = Column(String(100))
     strengh = Column(Integer)
     agility = Column(Integer)
     endurance = Column(Integer)

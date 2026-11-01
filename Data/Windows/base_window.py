@@ -1,5 +1,5 @@
 # Data/Windows/base_window.py
-
+from PySide6 import QtGui
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QMessageBox
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
@@ -112,6 +112,7 @@ class BasePage(QWidget):
     def closeEvent(self, event):
         self.dm.close()
         event.accept()
+
 
     def toggle_filters(self):
         """Переключатель: показать/скрыть filters"""
