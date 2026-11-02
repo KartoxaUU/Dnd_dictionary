@@ -6,7 +6,7 @@ from data_manager import DataManager
 def print_section(title):
     """Печатает раздел"""
     print("\n" + "=" * 60)
-    print(f"🧪 {title}")
+    print(f"{title}")
     print("=" * 60)
 
 
@@ -23,14 +23,14 @@ def test_races(dm):
     # 2. Конкретная раса
     race = dm.get_race_by_name("Человек")
     if race:
-        print(f"\n✅ Найдена раса: {race.name}")
+        print(f"\nНайдена раса: {race.name}")
         print(f"   Бонусы: {race.stats_bonus}")
         print(f"   Языки: {race.languages}")
 
     # 3. Способности расы
     abilities = dm.get_race_abilities_by_race(race)
     if abilities:
-        print(f"\n📜 Способности расы {race.name}:")
+        print(f"\nСпособности расы {race.name}:")
         for ability in abilities:
             print(f"  • {ability.name}")
 

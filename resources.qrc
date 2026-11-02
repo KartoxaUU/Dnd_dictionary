@@ -2,5 +2,8 @@
 <RCC version="1.0">
     <qresource prefix="/icons">
         <file>Data/Icons/filters_icon.png</file>
+		<file>Data/Icons/create.png</file>
+		<file>Data/Icons/editing.png</file>
+		<file>Data/Icons/delete.png</file>
     </qresource>
 </RCC>

@@ -18,7 +18,7 @@ def main():
     window.activateWindow()
     window.showMaximized()
 
-    print("Приложение запущено!")
+    print("Приложение запущено")
     sys.exit(app.exec())
 
 

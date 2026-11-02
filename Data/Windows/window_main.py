@@ -5,6 +5,7 @@ from Data.Windows.page_races import RacesPage
 from Data.Windows.page_mechanics import MechanicsPage
 from Data.Windows.page_backstrories import BackstoriesPage
 from Data.Windows.page_spells import SpellsPage
+from Data.Windows.page_bestiary import BestiaryPage
 
 
 class MainWindow(QMainWindow):
@@ -37,7 +38,7 @@ class MainWindow(QMainWindow):
             'spells': SpellsPage(self, self.go_back),
             'races': RacesPage(self, self.go_back),
             'backstories': BackstoriesPage(self, self.go_back),
-            # 'monsters': MonstersPage(self, self.show_page),
+            'bestiary': BestiaryPage(self, self.go_back),
             'mechanics': MechanicsPage(self, self.go_back),
         }
 
@@ -55,7 +56,7 @@ class MainWindow(QMainWindow):
             'Заклинания': 'spells',
             'Расы': 'races',
             'Предыстории': 'backstories',
-            'Бестиарий': 'monsters',
+            'Бестиарий': 'bestiary',
             'Механики': 'mechanics',
         }
 
