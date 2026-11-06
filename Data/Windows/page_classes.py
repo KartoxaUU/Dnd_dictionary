@@ -14,7 +14,6 @@ class ClassesPage(BasePage):
         self.go_back_callback = go_back_callback
         self.all_classes = []
 
-        self.setup_ui()
         self.load_classes()
 
     def setup_ui(self):

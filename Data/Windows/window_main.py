@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow, QStackedWidget
+from PySide6.QtGui import QShortcut, QKeySequence
 from Data.Windows.page_main import MainMenuPage
 from Data.Windows.page_classes import ClassesPage
 from Data.Windows.page_races import RacesPage
@@ -26,8 +27,24 @@ class MainWindow(QMainWindow):
         self.pages = {}
         self.load_pages()
 
+        self.shortcut_close()
+
         # Показываем главное меню
         self.show_page('main')
+
+    def shortcut_close(self):
+        self.shortcut_quit = QShortcut(QKeySequence("Esc"), self)
+        self.shortcut_quit.activated.connect(self.shortcut_go_back)
+
+    def shortcut_go_back(self):
+        """Esc: если на странице открыт диалог — закрыть его, иначе — в главное меню."""
+        current = self.stacked_widget.currentWidget()
+        # Если страница умеет закрывать диалоги и диалог открыт — закрываем
+        if hasattr(current, "close_all_dialogs") and hasattr(current, "is_any_dialog_open"):
+            if current.is_any_dialog_open():
+                current.close_all_dialogs()
+                return
+        self.go_back()
 
     def load_pages(self):
         """Загружает все страницы"""

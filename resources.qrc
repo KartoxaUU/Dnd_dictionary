@@ -5,5 +5,6 @@
 		<file>Data/Icons/create.png</file>
 		<file>Data/Icons/editing.png</file>
 		<file>Data/Icons/delete.png</file>
+		<file>Data/Icons/custom.png</file>
     </qresource>
 </RCC>

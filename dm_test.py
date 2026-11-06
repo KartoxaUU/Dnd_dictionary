@@ -160,7 +160,7 @@ def test_monsters_crud(dm):
         speed="40 футов, полёт 80 футов",
         description="Тестовый дракон для проверки CRUD",
         size="Огромный",
-        tipe="Дракон",
+        type="Дракон",
         danger="5",
         language="Драконий",
         strengh=22,
@@ -169,7 +169,7 @@ def test_monsters_crud(dm):
     print(f"   ✅ Добавлен: {new_monster.name} (ID: {new_monster.id})")
     print(f"   🔓 Кастомный: {new_monster.is_custom}")
     print(f"   Размер: {new_monster.size}")
-    print(f"   Тип: {new_monster.tipe}")
+    print(f"   Тип: {new_monster.type}")
     print(f"   Опасность: {new_monster.danger}")
 
     # Поиск по имени
@@ -232,7 +232,7 @@ def test_filters(dm):
     monsters = dm.filter_monsters(types=["Дракон", "Зверь"])
     print(f"   Найдено драконов и зверей: {len(monsters)}")
     for monster in monsters[:5]:
-        print(f"    • {monster.name} ({monster.tipe})")
+        print(f"    • {monster.name} ({monster.type})")
 
     # 5. Фильтр заклинаний
     print("\n🔍 Фильтр заклинаний (уровни):")

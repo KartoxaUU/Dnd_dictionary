@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1080</height>
+    <height>1085</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -970,7 +970,7 @@ QComboBox QAbstractItemView::item:selected {
 }</string>
      </property>
      <property name="editable">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="currentText">
       <string>Все</string>
@@ -1429,10 +1429,7 @@ QComboBox QAbstractItemView::item:selected {
 }</string>
          </property>
          <property name="frameShape">
-          <enum>QFrame::Shape::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Shadow::Raised</enum>
+          <enum>QFrame::Shape::NoFrame</enum>
          </property>
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
@@ -1635,7 +1632,7 @@ QListWidget {
 /* ======================================================== */
 QListWidget::item {
     background-color: rgb(31, 39, 53);  
-    color: rgb(240, 213, 163);          
+    /*color: rgb(240, 213, 163);    */      
     border-radius: 6px;                 
     padding: 10px 14px;                 
     margin-bottom: 8px;                 
@@ -1652,7 +1649,7 @@ QListWidget::item {
 /* ======================================================== */
 QListWidget::item:hover {
     background-color: rgb(50, 65, 87) !important;  
-    color: rgb(240, 213, 163) !important;
+    /*color: rgb(240, 213, 163) !important; */
     border: none !important;
 }
 
@@ -1666,7 +1663,7 @@ QListWidget::item:selected:focus {
     background-color: rgb(20, 26, 36) !important;  
     
     /* Приглушенное благородное золото для темного фонда */
-    color: rgb(230, 205, 155) !important; 
+    /*color: rgb(230, 205, 155) !important; */
     border: none !important;
 }
 
@@ -1938,10 +1935,7 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
 }</string>
    </property>
    <property name="frameShape">
-    <enum>QFrame::Shape::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Shadow::Raised</enum>
+    <enum>QFrame::Shape::NoFrame</enum>
    </property>
    <widget class="QFrame" name="Choose_Delete">
     <property name="geometry">
@@ -2034,10 +2028,7 @@ QListWidget QScrollBar::sub-page:vertical {
 </string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
+     <enum>QFrame::Shape::NoFrame</enum>
     </property>
     <widget class="QListWidget" name="listWidget_Delete">
      <property name="geometry">
@@ -2050,7 +2041,7 @@ QListWidget QScrollBar::sub-page:vertical {
      </property>
      <property name="styleSheet">
       <string notr="true">/* ======================================================== */
-/* 1. ИЗМЕНЕНО: ПРОЗРАЧНАЯ ПОДЛОЖКА СПИСКА                  */
+/* 1. ПРОЗРАЧНАЯ ПОДЛОЖКА СПИСКА                            */
 /* ======================================================== */
 QListWidget {
     /* Полностью прозрачный фон */
@@ -2060,7 +2051,7 @@ QListWidget {
     border-style: solid;
     border: none !important;              
     
-    /* Очистили отступы, чтобы плашки не сжимались внутри белого бокса */
+    /* Очистили отступы */
     padding: 0px;    
     outline: 0 !important;                           
 }
@@ -2079,7 +2070,8 @@ QListWidget::item {
     font-size: 13px;
     font-weight: bold;
     
-    border: none !important;
+    /* 🟢 ЗОЛОТАЯ ОБВОДКА */
+    border: 1px solid rgb(240, 213, 163) !important;
 }
 
 /* ======================================================== */
@@ -2087,8 +2079,10 @@ QListWidget::item {
 /* ======================================================== */
 QListWidget::item:hover {
     background-color: rgb(50, 65, 87) !important;  
-    color: rgb(240, 213, 163) !important;
-    border: none !important;
+    color: rgb(255, 223, 160) !important; /* Текст загорается ярче */
+    
+    /* 🟢 Обводка тоже становится ярче */
+    border: 1px solid rgb(255, 223, 160) !important; 
 }
 
 /* ======================================================== */
@@ -2100,9 +2094,11 @@ QListWidget::item:selected:focus {
     /* Глубокий бархатный полуночный тон */
     background-color: rgb(20, 26, 36) !important;  
     
-    /* Приглушенное благородное золото для темного фонда */
-    color: rgb(230, 205, 155) !important; 
-    border: none !important;
+    /* Приглушенное благородное золото */
+    color: rgb(212, 163, 89) !important; 
+    
+    /* 🟢 Обводка темнеет вместе с текстом */
+    border: 1px solid rgb(212, 163, 89) !important;
 }
 
 /* ======================================================== */
@@ -2110,7 +2106,7 @@ QListWidget::item:selected:focus {
 /* ======================================================== */
 QListWidget {
     selection-background-color: rgb(20, 26, 36);
-    selection-color: rgb(230, 205, 155);
+    selection-color: rgb(212, 163, 89);
 }</string>
      </property>
     </widget>
@@ -2143,7 +2139,7 @@ QListWidget {
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
     font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
+    font-size: 14px; 
     
     /* Скругление углов */
     border-radius: 6px;
@@ -2151,54 +2147,15 @@ QListWidget {
     /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
     padding: 5px 10px;
     
-    /* Защита от системных рамок */
-    border: none !important;
+    /* 🟢 Золотая обводка */
+    border: 1px solid rgb(240, 213, 163) !important;
 }</string>
      </property>
      <property name="text">
-      <string>Выберете монстра, чтобы удалить его</string>
+      <string>Выберите монстра, чтобы удалить его</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_Delete">
-     <property name="geometry">
-      <rect>
-       <x>600</x>
-       <y>530</y>
-       <width>131</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Palatino Linotype</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
-    color: rgb(240, 213, 163);          /* Яркое золото для текста */
-    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
-    border-radius: 4px;                 /* Прямые углы в стиль вашей поисковой строки */
-    padding: 6px 18px;                  /* Внутренние отступы */
-}
-
-/* Эффект при наведении мышки */
-QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
-}
-
-/* Эффект при нажатии (Шаг 3 из нашего плана) */
-QPushButton:pressed {
-    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
-    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
-}</string>
-     </property>
-     <property name="text">
-      <string>Выбрать</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_Back_Delete">
@@ -2213,31 +2170,125 @@ QPushButton:pressed {
      <property name="font">
       <font>
        <family>Palatino Linotype</family>
-       <pointsize>14</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
-    color: rgb(240, 213, 163);          /* Яркое золото для текста */
-    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
-    border-radius: 4px;                 /* Прямые углы в стиль вашей поисковой строки */
-    padding: 6px 18px;                  /* Внутренние отступы */
+    background-color: rgb(31, 39, 53);  /* Глубокий тёмно-синий цвет */
+    color: rgb(240, 213, 163);          /* Золотой текст */
+    border: 1px solid rgb(240, 213, 163) !important; /* 🟢 Золотая обводка */
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 20px;
 }
 
 /* Эффект при наведении мышки */
 QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+    background-color: rgb(45, 56, 76);  /* Кнопка светлеет */
+    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
+    border: 1px solid rgb(255, 223, 160) !important; /* Обводка тоже становится ярче */
 }
 
-/* Эффект при нажатии (Шаг 3 из нашего плана) */
+/* Эффект при нажатии */
 QPushButton:pressed {
-    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
-    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
+    background-color: rgb(20, 25, 35);  /* Уходит в глубокую тень (темнее базового) */
+    color: rgb(212, 163, 89);           /* Приглушенное золото */
+    border: 1px solid rgb(212, 163, 89) !important; /* Обводка темнеет вместе с текстом */
+    
+    /* Эффект &quot;вдавливания&quot; */
+    padding-top: 7px;
+    padding-bottom: 5px;
 }</string>
      </property>
      <property name="text">
       <string>Назад</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_Delete">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>10</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Palatino Linotype</family>
+       <pointsize>-1</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(99, 56, 56);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 18px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Удаление</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Delete">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>530</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Palatino Linotype</family>
+       <pointsize>-1</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(99, 56, 56);  /* Твой основной постоянный винный цвет */
+    color: rgb(240, 213, 163);          /* Золотой текст */
+    border: none;
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 20px;
+}
+
+/* Эффект при наведении мышки */
+QPushButton:hover {
+    background-color: rgb(122, 69, 69); /* Винный цвет становится чуть светлее и ярче */
+    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
+}
+
+/* Эффект при нажатии */
+QPushButton:pressed {
+    background-color: rgb(70, 40, 40);  /* Цвет уходит в глубокую тень */
+    color: rgb(240, 213, 163);          /* Возвращаем базовый золотой цвет текста */
+    
+    /* Эффект &quot;вдавливания&quot; */
+    padding-top: 7px;
+    padding-bottom: 5px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Подтвердить</string>
      </property>
     </widget>
    </widget>
@@ -2268,10 +2319,7 @@ QFrame QLabel {
 }</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
+     <enum>QFrame::Shape::NoFrame</enum>
     </property>
     <widget class="QScrollArea" name="scrollArea_Editing">
      <property name="geometry">
@@ -2363,15 +2411,15 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-149</y>
         <width>1009</width>
-        <height>3200</height>
+        <height>3310</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
         <width>1000</width>
-        <height>3200</height>
+        <height>3310</height>
        </size>
       </property>
       <widget class="QLabel" name="label_Danger_Editing">
@@ -2427,7 +2475,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         <rect>
          <x>180</x>
          <y>480</y>
-         <width>641</width>
+         <width>791</width>
          <height>40</height>
         </rect>
        </property>
@@ -2529,7 +2577,7 @@ QLineEdit:focus {
 }</string>
        </property>
        <property name="text">
-        <string>Сопративление</string>
+        <string>Сопротивление</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2589,7 +2637,7 @@ QLineEdit:focus {
         <string/>
        </property>
       </widget>
-      <widget class="QFrame" name="frame_Intelligence_Characteristics_Editing">
+      <widget class="QFrame" name="frame_Characteristics_Intelligence_Editing">
        <property name="geometry">
         <rect>
          <x>184</x>
@@ -2634,10 +2682,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Intelligence_Editing">
         <property name="geometry">
@@ -2711,6 +2756,9 @@ QFrame QLabel {
     font-size: 14px;
     font-weight: bold;
 }</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Intelligence_Editing">
@@ -2933,7 +2981,7 @@ QLineEdit:focus {
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QFrame" name="frame_CharacteristicsStrengthEditing">
+      <widget class="QFrame" name="frame_Characteristics_Strength_Editing">
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -2978,10 +3026,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Strength_Editing">
         <property name="geometry">
@@ -3056,6 +3101,9 @@ QFrame QLabel {
     font-weight: bold;
 }</string>
         </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Strength_Editing">
         <property name="geometry">
@@ -3116,10 +3164,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Endurance_Editing">
         <property name="geometry">
@@ -3194,6 +3239,9 @@ QFrame QLabel {
     font-weight: bold;
 }</string>
         </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Endurance_Editing">
         <property name="geometry">
@@ -3208,110 +3256,6 @@ QFrame QLabel {
          <string/>
         </property>
        </widget>
-      </widget>
-      <widget class="QComboBox" name="comboBox_Type_Editing">
-       <property name="geometry">
-        <rect>
-         <x>181</x>
-         <y>255</y>
-         <width>170</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>170</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. НАСТРОЙКА ОСНОВНОЙ ТЁМНО-СИНЕЙ ПЛАШКИ                 */
-/* ======================================================== */
-QComboBox {
-    /* Наш глубокий тёмно-синий цвет для фона плашки */
-    background-color: rgb(31, 39, 53);   
-    
-    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
-    border-style: solid;
-    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
-    
-    border-radius: 4px;
-    padding: 4px 26px 4px 8px;                  
-    
-    color: rgb(240, 213, 163);           
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    combobox-popup: 0;                   
-}
-
-/* ======================================================== */
-/* 2. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
-/* ======================================================== */
-QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);             /* Золотые строчки */
-    
-    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
-    border-radius: 4px;
-    outline: none;                         /* Уничтожаем рамку фокуса */
-    padding: 4px;
-    
-    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
-    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
-}
-
-/* Настройка самих строчек списка вариантов */
-QComboBox QAbstractItemView::item {
-    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
-    padding: 6px 20px 6px 12px;                   
-    min-height: 24px;                    
-    font-family: &quot;Palatino Linotype&quot;;
-    color: rgb(240, 213, 163);
-}
-
-/* Стираем синий виндовый цвет при наведении курсора */
-QComboBox QAbstractItemView::item:hover,
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
-    color: rgb(255, 223, 160) !important;  /* Яркое золото */
-}
-
-/* ======================================================== */
-/* 3. ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
-/* ======================================================== */
-QComboBox QAbstractItemView QScrollBar:vertical {
-    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
-    width: 10px;                           /* Тонкий и аккуратным */
-    margin: 0px;
-    border: none;
-}
-
-/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
-QComboBox QAbstractItemView QScrollBar::handle:vertical {
-    background-color: rgb(35, 57, 92);     
-    min-height: 20px;
-    border-radius: 4px;                    
-}
-
-/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
-QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
-    background-color: rgb(52, 115, 186);   
-}
-
-/* Уничтожение стрелочек сверху и снизу у скроллбара */
-QComboBox QAbstractItemView QScrollBar::add-line:vertical,
-QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
-QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
-QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
-QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
-QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
-    border: none;
-    background: none;
-    height: 0px;
-}</string>
-       </property>
       </widget>
       <widget class="QLabel" name="label_Cd_Editing">
        <property name="geometry">
@@ -3355,7 +3299,7 @@ QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
 }</string>
        </property>
        <property name="text">
-        <string>Кд</string>
+        <string>Класс доспеха</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -3531,7 +3475,7 @@ QLineEdit:focus {
         <rect>
          <x>180</x>
          <y>430</y>
-         <width>641</width>
+         <width>791</width>
          <height>40</height>
         </rect>
        </property>
@@ -3585,110 +3529,6 @@ QLineEdit:hover {
 QLineEdit:focus {
     background-color: rgb(31, 39, 53);   /* Возвращаем исходную плотность фона */
     border: 1px solid rgb(255, 223, 160); /* Золотая рамка загорается сочным, ярким светом */
-}</string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox_Size_Editing">
-       <property name="geometry">
-        <rect>
-         <x>181</x>
-         <y>301</y>
-         <width>170</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>170</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. НАСТРОЙКА ОСНОВНОЙ ТЁМНО-СИНЕЙ ПЛАШКИ                 */
-/* ======================================================== */
-QComboBox {
-    /* Наш глубокий тёмно-синий цвет для фона плашки */
-    background-color: rgb(31, 39, 53);   
-    
-    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
-    border-style: solid;
-    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
-    
-    border-radius: 4px;
-    padding: 4px 26px 4px 8px;                  
-    
-    color: rgb(240, 213, 163);           
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    combobox-popup: 0;                   
-}
-
-/* ======================================================== */
-/* 2. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
-/* ======================================================== */
-QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);             /* Золотые строчки */
-    
-    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
-    border-radius: 4px;
-    outline: none;                         /* Уничтожаем рамку фокуса */
-    padding: 4px;
-    
-    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
-    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
-}
-
-/* Настройка самих строчек списка вариантов */
-QComboBox QAbstractItemView::item {
-    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
-    padding: 6px 20px 6px 12px;                   
-    min-height: 24px;                    
-    font-family: &quot;Palatino Linotype&quot;;
-    color: rgb(240, 213, 163);
-}
-
-/* Стираем синий виндовый цвет при наведении курсора */
-QComboBox QAbstractItemView::item:hover,
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
-    color: rgb(255, 223, 160) !important;  /* Яркое золото */
-}
-
-/* ======================================================== */
-/* 3. ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
-/* ======================================================== */
-QComboBox QAbstractItemView QScrollBar:vertical {
-    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
-    width: 10px;                           /* Тонкий и аккуратным */
-    margin: 0px;
-    border: none;
-}
-
-/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
-QComboBox QAbstractItemView QScrollBar::handle:vertical {
-    background-color: rgb(35, 57, 92);     
-    min-height: 20px;
-    border-radius: 4px;                    
-}
-
-/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
-QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
-    background-color: rgb(52, 115, 186);   
-}
-
-/* Уничтожение стрелочек сверху и снизу у скроллбара */
-QComboBox QAbstractItemView QScrollBar::add-line:vertical,
-QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
-QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
-QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
-QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
-QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
-    border: none;
-    background: none;
-    height: 0px;
 }</string>
        </property>
       </widget>
@@ -3785,10 +3625,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Wisdom_Editing">
         <property name="geometry">
@@ -3862,6 +3699,9 @@ QFrame QLabel {
     font-size: 14px;
     font-weight: bold;
 }</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Wisdom_Editing">
@@ -4121,10 +3961,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Agility_Editing">
         <property name="geometry">
@@ -4198,6 +4035,9 @@ QFrame QLabel {
     font-size: 14px;
     font-weight: bold;
 }</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Agility_Editing">
@@ -4276,7 +4116,7 @@ QLineEdit:focus {
 }</string>
        </property>
       </widget>
-      <widget class="QFrame" name="frame_Characteristics_Editing">
+      <widget class="QFrame" name="frame_Characteristics_Charisma_Editing">
        <property name="geometry">
         <rect>
          <x>300</x>
@@ -4321,12 +4161,9 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLabel" name="label_Characteristics_Editing">
+       <widget class="QLabel" name="label_Charisma_Editing">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -4360,7 +4197,7 @@ QFrame QLabel {
          <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QSpinBox" name="spinBox_Characteristics_Editing">
+       <widget class="QSpinBox" name="spinBox_Charisma_Editing">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -4399,8 +4236,11 @@ QFrame QLabel {
     font-weight: bold;
 }</string>
         </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
        </widget>
-       <widget class="QLabel" name="label_Bonus_Characteristics_Editing">
+       <widget class="QLabel" name="label_Bonus_Charisma_Editing">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -4462,11 +4302,11 @@ QFrame QLabel {
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label_State_imm_Editing">
+      <widget class="QLabel" name="label_State_Imm_Editing">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>780</y>
+         <y>830</y>
          <width>203</width>
          <height>40</height>
         </rect>
@@ -4510,12 +4350,12 @@ QFrame QLabel {
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_Damage_imm_Editing">
+      <widget class="QLineEdit" name="lineEdit_Damage_Imm_Editing">
        <property name="geometry">
         <rect>
-         <x>220</x>
-         <y>730</y>
-         <width>170</width>
+         <x>10</x>
+         <y>780</y>
+         <width>961</width>
          <height>40</height>
         </rect>
        </property>
@@ -4570,6 +4410,9 @@ QLineEdit:focus {
     background-color: rgb(31, 39, 53);   /* Возвращаем исходную плотность фона */
     border: 1px solid rgb(255, 223, 160); /* Золотая рамка загорается сочным, ярким светом */
 }</string>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
       <widget class="QLabel" name="label_Damage_imm_Editing">
@@ -4618,68 +4461,6 @@ QLineEdit:focus {
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_State_imm_Editing">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>780</y>
-         <width>170</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>170</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>2000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit {
-    /* Базовый тёмно-синий DnD фон плашки */
-    background-color: rgb(31, 39, 53);   
-    
-    /* ХИТРЫЙ ФИКС: Сброс стиля Windows для корректной работы рамок */
-    border-style: solid;
-    /* Золотая обводка толщиной 1px, как на твоем скриншоте */
-    border: 1px solid rgb(240, 213, 163); 
-    
-    /* Аккуратное скругление углов */
-    border-radius: 4px;                  
-    
-    /* Внутренние отступы: 4px сверху/снизу, 8px слева/справа, чтобы текст не лип к краям */
-    padding: 4px 8px;                   
-    
-    /* Спокойное золото для вводимого текста и наш глобальный книжный шрифт */
-    color: rgb(240, 213, 163);           
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* Эффект при наведении курсора мыши (Инпут мягко светлеет) */
-QLineEdit:hover {
-    background-color: rgb(45, 56, 76);   /* Тёмно-синий фон становится на пару тонов светлее */
-}
-
-/* Эффект в момент ввода текста (Когда кликнули внутрь инпута) */
-QLineEdit:focus {
-    background-color: rgb(31, 39, 53);   /* Возвращаем исходную плотность фона */
-    border: 1px solid rgb(255, 223, 160); /* Золотая рамка загорается сочным, ярким светом */
-}</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_Speed_Editing">
@@ -4785,7 +4566,7 @@ QLineEdit:focus {
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>830</y>
+         <y>930</y>
          <width>159</width>
          <height>40</height>
         </rect>
@@ -4829,11 +4610,1405 @@ QLineEdit:focus {
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBox_Mastery_Editing">
+      <widget class="QLabel" name="label_Passiveabil_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>980</y>
+         <width>201</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>159</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(31, 39, 53);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+       </property>
+       <property name="text">
+        <string>Пассивные способности</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_Capabilities_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>1030</y>
+         <width>981</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* ======================================================== */
+/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
+/* ======================================================== */
+QTextEdit {
+    background-color: rgb(31, 39, 53);   
+    color: rgb(240, 213, 163);           
+    border: 1px solid rgb(240, 213, 163); 
+    border-radius: 4px;                  
+    padding: 4px;                        
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    selection-background-color: rgb(60, 83, 133);
+    selection-color: rgb(255, 223, 160);
+}
+
+/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
+QTextEdit QWidget {
+    background-color: rgb(31, 39, 53);
+    color: rgb(240, 213, 163);
+}
+
+/* ======================================================== */
+/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
+/* ======================================================== */
+QScrollBar:vertical {
+    background: transparent; 
+    width: 8px;              /* Тонкий ползунок (8 пикселей) */
+    margin: 0px;
+    border: none;
+}
+
+/* ======================================================== */
+/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
+/* ======================================================== */
+QScrollBar::handle:vertical {
+    background: rgb(35, 57, 92);
+    min-height: 30px;
+    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
+    border: none; 
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgb(60, 83, 133);
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: rgb(31, 39, 53);
+}
+
+/* ======================================================== */
+/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
+/* ======================================================== */
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+/* Убираем белый фон пустых зон (над и под ползунком) */
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Actions_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>1300</y>
+         <width>159</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>159</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(31, 39, 53);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+       </property>
+       <property name="text">
+        <string>Действия</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Reactions_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>1620</y>
+         <width>159</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>159</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(31, 39, 53);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+       </property>
+       <property name="text">
+        <string>Реакции</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Legendary_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>1940</y>
+         <width>171</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>159</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(31, 39, 53);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+       </property>
+       <property name="text">
+        <string>Легендарные действия</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Mythical_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>2260</y>
+         <width>191</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>159</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(31, 39, 53);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+       </property>
+       <property name="text">
+        <string>Мифические действия</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_Actions_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>1350</y>
+         <width>981</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* ======================================================== */
+/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
+/* ======================================================== */
+QTextEdit {
+    background-color: rgb(31, 39, 53);   
+    color: rgb(240, 213, 163);           
+    border: 1px solid rgb(240, 213, 163); 
+    border-radius: 4px;                  
+    padding: 4px;                        
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    selection-background-color: rgb(60, 83, 133);
+    selection-color: rgb(255, 223, 160);
+}
+
+/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
+QTextEdit QWidget {
+    background-color: rgb(31, 39, 53);
+    color: rgb(240, 213, 163);
+}
+
+/* ======================================================== */
+/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
+/* ======================================================== */
+QScrollBar:vertical {
+    background: transparent; 
+    width: 8px;              /* Тонкий ползунок (8 пикселей) */
+    margin: 0px;
+    border: none;
+}
+
+/* ======================================================== */
+/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
+/* ======================================================== */
+QScrollBar::handle:vertical {
+    background: rgb(35, 57, 92);
+    min-height: 30px;
+    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
+    border: none; 
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgb(60, 83, 133);
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: rgb(31, 39, 53);
+}
+
+/* ======================================================== */
+/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
+/* ======================================================== */
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+/* Убираем белый фон пустых зон (над и под ползунком) */
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_Reactions_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>1670</y>
+         <width>981</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* ======================================================== */
+/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
+/* ======================================================== */
+QTextEdit {
+    background-color: rgb(31, 39, 53);   
+    color: rgb(240, 213, 163);           
+    border: 1px solid rgb(240, 213, 163); 
+    border-radius: 4px;                  
+    padding: 4px;                        
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    selection-background-color: rgb(60, 83, 133);
+    selection-color: rgb(255, 223, 160);
+}
+
+/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
+QTextEdit QWidget {
+    background-color: rgb(31, 39, 53);
+    color: rgb(240, 213, 163);
+}
+
+/* ======================================================== */
+/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
+/* ======================================================== */
+QScrollBar:vertical {
+    background: transparent; 
+    width: 8px;              /* Тонкий ползунок (8 пикселей) */
+    margin: 0px;
+    border: none;
+}
+
+/* ======================================================== */
+/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
+/* ======================================================== */
+QScrollBar::handle:vertical {
+    background: rgb(35, 57, 92);
+    min-height: 30px;
+    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
+    border: none; 
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgb(60, 83, 133);
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: rgb(31, 39, 53);
+}
+
+/* ======================================================== */
+/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
+/* ======================================================== */
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+/* Убираем белый фон пустых зон (над и под ползунком) */
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_Legendary_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>1990</y>
+         <width>981</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* ======================================================== */
+/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
+/* ======================================================== */
+QTextEdit {
+    background-color: rgb(31, 39, 53);   
+    color: rgb(240, 213, 163);           
+    border: 1px solid rgb(240, 213, 163); 
+    border-radius: 4px;                  
+    padding: 4px;                        
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    selection-background-color: rgb(60, 83, 133);
+    selection-color: rgb(255, 223, 160);
+}
+
+/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
+QTextEdit QWidget {
+    background-color: rgb(31, 39, 53);
+    color: rgb(240, 213, 163);
+}
+
+/* ======================================================== */
+/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
+/* ======================================================== */
+QScrollBar:vertical {
+    background: transparent; 
+    width: 8px;              /* Тонкий ползунок (8 пикселей) */
+    margin: 0px;
+    border: none;
+}
+
+/* ======================================================== */
+/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
+/* ======================================================== */
+QScrollBar::handle:vertical {
+    background: rgb(35, 57, 92);
+    min-height: 30px;
+    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
+    border: none; 
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgb(60, 83, 133);
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: rgb(31, 39, 53);
+}
+
+/* ======================================================== */
+/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
+/* ======================================================== */
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+/* Убираем белый фон пустых зон (над и под ползунком) */
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_Mythical_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>2310</y>
+         <width>981</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* ======================================================== */
+/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
+/* ======================================================== */
+QTextEdit {
+    background-color: rgb(31, 39, 53);   
+    color: rgb(240, 213, 163);           
+    border: 1px solid rgb(240, 213, 163); 
+    border-radius: 4px;                  
+    padding: 4px;                        
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    selection-background-color: rgb(60, 83, 133);
+    selection-color: rgb(255, 223, 160);
+}
+
+/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
+QTextEdit QWidget {
+    background-color: rgb(31, 39, 53);
+    color: rgb(240, 213, 163);
+}
+
+/* ======================================================== */
+/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
+/* ======================================================== */
+QScrollBar:vertical {
+    background: transparent; 
+    width: 8px;              /* Тонкий ползунок (8 пикселей) */
+    margin: 0px;
+    border: none;
+}
+
+/* ======================================================== */
+/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
+/* ======================================================== */
+QScrollBar::handle:vertical {
+    background: rgb(35, 57, 92);
+    min-height: 30px;
+    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
+    border: none; 
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgb(60, 83, 133);
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: rgb(31, 39, 53);
+}
+
+/* ======================================================== */
+/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
+/* ======================================================== */
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+/* Убираем белый фон пустых зон (над и под ползунком) */
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Lair_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>2580</y>
+         <width>159</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>159</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(31, 39, 53);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+       </property>
+       <property name="text">
+        <string>Логово</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_Lair_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>2630</y>
+         <width>981</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* ======================================================== */
+/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
+/* ======================================================== */
+QTextEdit {
+    background-color: rgb(31, 39, 53);   
+    color: rgb(240, 213, 163);           
+    border: 1px solid rgb(240, 213, 163); 
+    border-radius: 4px;                  
+    padding: 4px;                        
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    selection-background-color: rgb(60, 83, 133);
+    selection-color: rgb(255, 223, 160);
+}
+
+/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
+QTextEdit QWidget {
+    background-color: rgb(31, 39, 53);
+    color: rgb(240, 213, 163);
+}
+
+/* ======================================================== */
+/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
+/* ======================================================== */
+QScrollBar:vertical {
+    background: transparent; 
+    width: 8px;              /* Тонкий ползунок (8 пикселей) */
+    margin: 0px;
+    border: none;
+}
+
+/* ======================================================== */
+/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
+/* ======================================================== */
+QScrollBar::handle:vertical {
+    background: rgb(35, 57, 92);
+    min-height: 30px;
+    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
+    border: none; 
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgb(60, 83, 133);
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: rgb(31, 39, 53);
+}
+
+/* ======================================================== */
+/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
+/* ======================================================== */
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+/* Убираем белый фон пустых зон (над и под ползунком) */
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_Description_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>2950</y>
+         <width>981</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* ======================================================== */
+/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
+/* ======================================================== */
+QTextEdit {
+    background-color: rgb(31, 39, 53);   
+    color: rgb(240, 213, 163);           
+    border: 1px solid rgb(240, 213, 163); 
+    border-radius: 4px;                  
+    padding: 4px;                        
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    selection-background-color: rgb(60, 83, 133);
+    selection-color: rgb(255, 223, 160);
+}
+
+/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
+QTextEdit QWidget {
+    background-color: rgb(31, 39, 53);
+    color: rgb(240, 213, 163);
+}
+
+/* ======================================================== */
+/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
+/* ======================================================== */
+QScrollBar:vertical {
+    background: transparent; 
+    width: 8px;              /* Тонкий ползунок (8 пикселей) */
+    margin: 0px;
+    border: none;
+}
+
+/* ======================================================== */
+/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
+/* ======================================================== */
+QScrollBar::handle:vertical {
+    background: rgb(35, 57, 92);
+    min-height: 30px;
+    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
+    border: none; 
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgb(60, 83, 133);
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: rgb(31, 39, 53);
+}
+
+/* ======================================================== */
+/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
+/* ======================================================== */
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    height: 0px;
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+/* Убираем белый фон пустых зон (над и под ползунком) */
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Description_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>2900</y>
+         <width>159</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>159</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(31, 39, 53);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 14px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+       </property>
+       <property name="text">
+        <string>Описание</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_Back_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>161</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Palatino Linotype</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
+    color: rgb(240, 213, 163);          /* Яркое золото для текста */
+    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
+    border-radius: 4px;                 /* Прямые углы в стиль вашей поисковой строки */
+    padding: 6px 18px;                  /* Внутренние отступы */
+}
+
+/* Эффект при наведении мышки */
+QPushButton:hover {
+    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+}
+
+/* Эффект при нажатии (Шаг 3 из нашего плана) */
+QPushButton:pressed {
+    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
+    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
+}</string>
+       </property>
+       <property name="text">
+        <string>Назад</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Error_Editing">
+       <property name="geometry">
+        <rect>
+         <x>420</x>
+         <y>3238</y>
+         <width>391</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Palatino Linotype</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Editing">
        <property name="geometry">
         <rect>
          <x>180</x>
-         <y>830</y>
+         <y>10</y>
+         <width>181</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Palatino Linotype</family>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    /* Заливка кожаным цветом */
+    background-color: rgb(83, 73, 64);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 18px; 
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы */
+    padding: 5px 10px;
+    
+    /* Убираем любые рамки */
+    border: none !important;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Редактирование</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_Editing">
+       <property name="geometry">
+        <rect>
+         <x>830</x>
+         <y>3230</y>
+         <width>161</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Palatino Linotype</family>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(83, 73, 64);  /* Твой основной постоянный цвет (тёмная кожа) */
+    color: rgb(240, 213, 163);          /* Золотой текст */
+    border: none;                       /* Убираем рамки */
+    border-radius: 4px;                 /* Скругление */
+    padding: 6px 18px;                  /* Внутренние отступы */
+    font-family: &quot;Palatino Linotype&quot;;   /* Наш глобальный шрифт */
+    font-size: 20px;
+}
+
+/* Эффект при наведении мышки */
+QPushButton:hover {
+    background-color: rgb(105, 93, 82); /* Кнопка становится чуть светлее (выделяется из фона) */
+    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
+}
+
+/* Эффект при нажатии */
+QPushButton:pressed {
+    background-color: rgb(60, 53, 46);  /* Кнопка уходит в тень (становится темнее) */
+    color: rgb(240, 213, 163);          /* Возвращаем базовый золотой цвет текста */
+    
+    /* Небольшой фикс для эффекта &quot;вдавливания&quot; (текст сдвигается на 1 пиксель вниз) */
+    padding-top: 7px;
+    padding-bottom: 5px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Подтвердить</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="spinBox_Mastery_Editing">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>930</y>
+         <width>49</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>20</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>49</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSpinBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;                  
+    padding: 4px 26px 4px 8px;            /* Оставили те же отступы из примера */
+    
+    color: rgb(240, 213, 163);           /* Золото для текста */
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+       <property name="value">
+        <number>2</number>
+       </property>
+       <property name="displayIntegerBase">
+        <number>10</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_State_Imm_Editing">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>880</y>
+         <width>961</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>170</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>2000</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+    /* Базовый тёмно-синий DnD фон плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Сброс стиля Windows для корректной работы рамок */
+    border-style: solid;
+    /* Золотая обводка толщиной 1px, как на твоем скриншоте */
+    border: 1px solid rgb(240, 213, 163); 
+    
+    /* Аккуратное скругление углов */
+    border-radius: 4px;                  
+    
+    /* Внутренние отступы: 4px сверху/снизу, 8px слева/справа, чтобы текст не лип к краям */
+    padding: 4px 8px;                   
+    
+    /* Спокойное золото для вводимого текста и наш глобальный книжный шрифт */
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Эффект при наведении курсора мыши (Инпут мягко светлеет) */
+QLineEdit:hover {
+    background-color: rgb(45, 56, 76);   /* Тёмно-синий фон становится на пару тонов светлее */
+}
+
+/* Эффект в момент ввода текста (Когда кликнули внутрь инпута) */
+QLineEdit:focus {
+    background-color: rgb(31, 39, 53);   /* Возвращаем исходную плотность фона */
+    border: 1px solid rgb(255, 223, 160); /* Золотая рамка загорается сочным, ярким светом */
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_Size_Editing">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>301</y>
          <width>170</width>
          <height>40</height>
         </rect>
@@ -4932,1302 +6107,305 @@ QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
     height: 0px;
 }</string>
        </property>
+       <item>
+        <property name="text">
+         <string>Средний</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Крошечный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Маленький</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Огромный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Громадный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Маленький или средний</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Маленький рой крошечных</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Средний рой крошечных</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой рой крошечных</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой рой маленьких</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой рой средних</string>
+        </property>
+       </item>
       </widget>
-      <widget class="QLabel" name="label_Passiveabil_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>890</y>
-         <width>201</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>159</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(31, 39, 53);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
-    
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Пассивные способности</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QTextEdit" name="textEdit_Capabilities_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>940</y>
-         <width>981</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
-/* ======================================================== */
-QTextEdit {
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);           
-    border: 1px solid rgb(240, 213, 163); 
-    border-radius: 4px;                  
-    padding: 4px;                        
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    selection-background-color: rgb(60, 83, 133);
-    selection-color: rgb(255, 223, 160);
-}
-
-/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
-QTextEdit QWidget {
-    background-color: rgb(31, 39, 53);
-    color: rgb(240, 213, 163);
-}
-
-/* ======================================================== */
-/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
-/* ======================================================== */
-QScrollBar:vertical {
-    background: transparent; 
-    width: 8px;              /* Тонкий ползунок (8 пикселей) */
-    margin: 0px;
-    border: none;
-}
-
-/* ======================================================== */
-/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
-/* ======================================================== */
-QScrollBar::handle:vertical {
-    background: rgb(35, 57, 92);
-    min-height: 30px;
-    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
-    border: none; 
-    margin: 0px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: rgb(60, 83, 133);
-}
-
-QScrollBar::handle:vertical:pressed {
-    background: rgb(31, 39, 53);
-}
-
-/* ======================================================== */
-/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
-/* ======================================================== */
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-QScrollBar::up-arrow:vertical,
-QScrollBar::down-arrow:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-/* Убираем белый фон пустых зон (над и под ползунком) */
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    background: transparent;
-    border: none;
-}</string>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Actions_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>1210</y>
-         <width>159</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>159</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(31, 39, 53);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
-    
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Действия</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Reactions_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>1530</y>
-         <width>159</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>159</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(31, 39, 53);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
-    
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Реакции</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Legendary_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>1850</y>
-         <width>171</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>159</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(31, 39, 53);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
-    
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Легендарные действия</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Mythical_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>2170</y>
-         <width>191</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>159</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(31, 39, 53);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
-    
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Мифические действия</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QTextEdit" name="textEdit_Actions_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>1260</y>
-         <width>981</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
-/* ======================================================== */
-QTextEdit {
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);           
-    border: 1px solid rgb(240, 213, 163); 
-    border-radius: 4px;                  
-    padding: 4px;                        
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    selection-background-color: rgb(60, 83, 133);
-    selection-color: rgb(255, 223, 160);
-}
-
-/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
-QTextEdit QWidget {
-    background-color: rgb(31, 39, 53);
-    color: rgb(240, 213, 163);
-}
-
-/* ======================================================== */
-/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
-/* ======================================================== */
-QScrollBar:vertical {
-    background: transparent; 
-    width: 8px;              /* Тонкий ползунок (8 пикселей) */
-    margin: 0px;
-    border: none;
-}
-
-/* ======================================================== */
-/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
-/* ======================================================== */
-QScrollBar::handle:vertical {
-    background: rgb(35, 57, 92);
-    min-height: 30px;
-    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
-    border: none; 
-    margin: 0px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: rgb(60, 83, 133);
-}
-
-QScrollBar::handle:vertical:pressed {
-    background: rgb(31, 39, 53);
-}
-
-/* ======================================================== */
-/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
-/* ======================================================== */
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-QScrollBar::up-arrow:vertical,
-QScrollBar::down-arrow:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-/* Убираем белый фон пустых зон (над и под ползунком) */
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    background: transparent;
-    border: none;
-}</string>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QTextEdit" name="textEdit_Reactions_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>1580</y>
-         <width>981</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
-/* ======================================================== */
-QTextEdit {
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);           
-    border: 1px solid rgb(240, 213, 163); 
-    border-radius: 4px;                  
-    padding: 4px;                        
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    selection-background-color: rgb(60, 83, 133);
-    selection-color: rgb(255, 223, 160);
-}
-
-/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
-QTextEdit QWidget {
-    background-color: rgb(31, 39, 53);
-    color: rgb(240, 213, 163);
-}
-
-/* ======================================================== */
-/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
-/* ======================================================== */
-QScrollBar:vertical {
-    background: transparent; 
-    width: 8px;              /* Тонкий ползунок (8 пикселей) */
-    margin: 0px;
-    border: none;
-}
-
-/* ======================================================== */
-/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
-/* ======================================================== */
-QScrollBar::handle:vertical {
-    background: rgb(35, 57, 92);
-    min-height: 30px;
-    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
-    border: none; 
-    margin: 0px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: rgb(60, 83, 133);
-}
-
-QScrollBar::handle:vertical:pressed {
-    background: rgb(31, 39, 53);
-}
-
-/* ======================================================== */
-/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
-/* ======================================================== */
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-QScrollBar::up-arrow:vertical,
-QScrollBar::down-arrow:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-/* Убираем белый фон пустых зон (над и под ползунком) */
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    background: transparent;
-    border: none;
-}</string>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QTextEdit" name="textEdit_Legendary_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>1900</y>
-         <width>981</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
-/* ======================================================== */
-QTextEdit {
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);           
-    border: 1px solid rgb(240, 213, 163); 
-    border-radius: 4px;                  
-    padding: 4px;                        
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    selection-background-color: rgb(60, 83, 133);
-    selection-color: rgb(255, 223, 160);
-}
-
-/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
-QTextEdit QWidget {
-    background-color: rgb(31, 39, 53);
-    color: rgb(240, 213, 163);
-}
-
-/* ======================================================== */
-/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
-/* ======================================================== */
-QScrollBar:vertical {
-    background: transparent; 
-    width: 8px;              /* Тонкий ползунок (8 пикселей) */
-    margin: 0px;
-    border: none;
-}
-
-/* ======================================================== */
-/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
-/* ======================================================== */
-QScrollBar::handle:vertical {
-    background: rgb(35, 57, 92);
-    min-height: 30px;
-    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
-    border: none; 
-    margin: 0px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: rgb(60, 83, 133);
-}
-
-QScrollBar::handle:vertical:pressed {
-    background: rgb(31, 39, 53);
-}
-
-/* ======================================================== */
-/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
-/* ======================================================== */
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-QScrollBar::up-arrow:vertical,
-QScrollBar::down-arrow:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-/* Убираем белый фон пустых зон (над и под ползунком) */
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    background: transparent;
-    border: none;
-}</string>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QTextEdit" name="textEdit_Mythical_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>2220</y>
-         <width>981</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
-/* ======================================================== */
-QTextEdit {
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);           
-    border: 1px solid rgb(240, 213, 163); 
-    border-radius: 4px;                  
-    padding: 4px;                        
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    selection-background-color: rgb(60, 83, 133);
-    selection-color: rgb(255, 223, 160);
-}
-
-/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
-QTextEdit QWidget {
-    background-color: rgb(31, 39, 53);
-    color: rgb(240, 213, 163);
-}
-
-/* ======================================================== */
-/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
-/* ======================================================== */
-QScrollBar:vertical {
-    background: transparent; 
-    width: 8px;              /* Тонкий ползунок (8 пикселей) */
-    margin: 0px;
-    border: none;
-}
-
-/* ======================================================== */
-/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
-/* ======================================================== */
-QScrollBar::handle:vertical {
-    background: rgb(35, 57, 92);
-    min-height: 30px;
-    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
-    border: none; 
-    margin: 0px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: rgb(60, 83, 133);
-}
-
-QScrollBar::handle:vertical:pressed {
-    background: rgb(31, 39, 53);
-}
-
-/* ======================================================== */
-/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
-/* ======================================================== */
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-QScrollBar::up-arrow:vertical,
-QScrollBar::down-arrow:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-/* Убираем белый фон пустых зон (над и под ползунком) */
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    background: transparent;
-    border: none;
-}</string>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Lair_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>2490</y>
-         <width>159</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>159</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(31, 39, 53);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
-    
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Логово</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QTextEdit" name="textEdit_Lair_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>2540</y>
-         <width>981</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
-/* ======================================================== */
-QTextEdit {
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);           
-    border: 1px solid rgb(240, 213, 163); 
-    border-radius: 4px;                  
-    padding: 4px;                        
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    selection-background-color: rgb(60, 83, 133);
-    selection-color: rgb(255, 223, 160);
-}
-
-/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
-QTextEdit QWidget {
-    background-color: rgb(31, 39, 53);
-    color: rgb(240, 213, 163);
-}
-
-/* ======================================================== */
-/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
-/* ======================================================== */
-QScrollBar:vertical {
-    background: transparent; 
-    width: 8px;              /* Тонкий ползунок (8 пикселей) */
-    margin: 0px;
-    border: none;
-}
-
-/* ======================================================== */
-/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
-/* ======================================================== */
-QScrollBar::handle:vertical {
-    background: rgb(35, 57, 92);
-    min-height: 30px;
-    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
-    border: none; 
-    margin: 0px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: rgb(60, 83, 133);
-}
-
-QScrollBar::handle:vertical:pressed {
-    background: rgb(31, 39, 53);
-}
-
-/* ======================================================== */
-/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
-/* ======================================================== */
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-QScrollBar::up-arrow:vertical,
-QScrollBar::down-arrow:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-/* Убираем белый фон пустых зон (над и под ползунком) */
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    background: transparent;
-    border: none;
-}</string>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QTextEdit" name="textEdit_Description_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>2860</y>
-         <width>981</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. БАЗОВАЯ ПЛАШКА ТЕКСТОВОГО ПОЛЯ                        */
-/* ======================================================== */
-QTextEdit {
-    background-color: rgb(31, 39, 53);   
-    color: rgb(240, 213, 163);           
-    border: 1px solid rgb(240, 213, 163); 
-    border-radius: 4px;                  
-    padding: 4px;                        
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    selection-background-color: rgb(60, 83, 133);
-    selection-color: rgb(255, 223, 160);
-}
-
-/* Принудительно делаем внутренний холст темным, чтобы не было белых вспышек */
-QTextEdit QWidget {
-    background-color: rgb(31, 39, 53);
-    color: rgb(240, 213, 163);
-}
-
-/* ======================================================== */
-/* 2. ТОНКАЯ ДОРОЖКА СКРОЛЛБАРА                             */
-/* ======================================================== */
-QScrollBar:vertical {
-    background: transparent; 
-    width: 8px;              /* Тонкий ползунок (8 пикселей) */
-    margin: 0px;
-    border: none;
-}
-
-/* ======================================================== */
-/* 3. САМ БЕГУНОК (БЕЗ УГОЛКОВ И РАМОК)                     */
-/* ======================================================== */
-QScrollBar::handle:vertical {
-    background: rgb(35, 57, 92);
-    min-height: 30px;
-    border-radius: 4px;      /* Идеальное скругление для ширины 8px */
-    border: none; 
-    margin: 0px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: rgb(60, 83, 133);
-}
-
-QScrollBar::handle:vertical:pressed {
-    background: rgb(31, 39, 53);
-}
-
-/* ======================================================== */
-/* 4. УНИЧТОЖЕНИЕ СТРЕЛОК И БЕЛЫХ КВАДРАТОВ                 */
-/* ======================================================== */
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-QScrollBar::up-arrow:vertical,
-QScrollBar::down-arrow:vertical {
-    height: 0px;
-    width: 0px;
-    border: none;
-    background: none;
-}
-
-/* Убираем белый фон пустых зон (над и под ползунком) */
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    background: transparent;
-    border: none;
-}</string>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Palatino Linotype'; font-size:14px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Description_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>2810</y>
-         <width>159</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>159</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(31, 39, 53);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
-    
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Описание</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_Back_Editing">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>161</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Palatino Linotype</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
-    color: rgb(240, 213, 163);          /* Яркое золото для текста */
-    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
-    border-radius: 4px;                 /* Прямые углы в стиль вашей поисковой строки */
-    padding: 6px 18px;                  /* Внутренние отступы */
-}
-
-/* Эффект при наведении мышки */
-QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
-}
-
-/* Эффект при нажатии (Шаг 3 из нашего плана) */
-QPushButton:pressed {
-    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
-    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
-}</string>
-       </property>
-       <property name="text">
-        <string>Назад</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Editing">
+      <widget class="QComboBox" name="comboBox_Type_Editing">
        <property name="geometry">
         <rect>
          <x>180</x>
-         <y>10</y>
-         <width>161</width>
-         <height>41</height>
+         <y>255</y>
+         <width>170</width>
+         <height>40</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Palatino Linotype</family>
-         <pointsize>-1</pointsize>
-        </font>
+       <property name="minimumSize">
+        <size>
+         <width>170</width>
+         <height>40</height>
+        </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(99, 56, 56);  
+        <string notr="true">/* ======================================================== */
+/* 1. НАСТРОЙКА ОСНОВНОЙ ТЁМНО-СИНЕЙ ПЛАШКИ                 */
+/* ======================================================== */
+QComboBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
     
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 18px; /* При необходимости подправьте размер */
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
     
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
-}</string>
-       </property>
-       <property name="text">
-        <string>Редактирование</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Editing_Ico">
-       <property name="geometry">
-        <rect>
-         <x>340</x>
-         <y>10</y>
-         <width>41</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Palatino Linotype</family>
-         <pointsize>3</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap>../../../../Downloads/Editing.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_Editing">
-       <property name="geometry">
-        <rect>
-         <x>810</x>
-         <y>10</y>
-         <width>171</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Palatino Linotype</family>
-         <pointsize>-1</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: rgb(99, 56, 56);  /* Твой основной постоянный винный цвет */
-    color: rgb(240, 213, 163);          /* Золотой текст */
-    border: none;
     border-radius: 4px;
-    padding: 6px 18px;
-    font-family: &quot;Palatino Linotype&quot;;
-    font-size: 20px;
-}
-
-/* Эффект при наведении мышки */
-QPushButton:hover {
-    background-color: rgb(122, 69, 69); /* Винный цвет становится чуть светлее и ярче */
-    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
-}
-
-/* Эффект при нажатии */
-QPushButton:pressed {
-    background-color: rgb(70, 40, 40);  /* Цвет уходит в глубокую тень */
-    color: rgb(240, 213, 163);          /* Возвращаем базовый золотой цвет текста */
+    padding: 4px 26px 4px 8px;                  
     
-    /* Эффект &quot;вдавливания&quot; */
-    padding-top: 7px;
-    padding-bottom: 5px;
+    color: rgb(240, 213, 163);           
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+    combobox-popup: 0;                   
+}
+
+/* ======================================================== */
+/* 2. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
+/* ======================================================== */
+QComboBox QAbstractItemView {
+    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
+    color: rgb(240, 213, 163);             /* Золотые строчки */
+    
+    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
+    border-radius: 4px;
+    outline: none;                         /* Уничтожаем рамку фокуса */
+    padding: 4px;
+    
+    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
+    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
+}
+
+/* Настройка самих строчек списка вариантов */
+QComboBox QAbstractItemView::item {
+    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
+    padding: 6px 20px 6px 12px;                   
+    min-height: 24px;                    
+    font-family: &quot;Palatino Linotype&quot;;
+    color: rgb(240, 213, 163);
+}
+
+/* Стираем синий виндовый цвет при наведении курсора */
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
+    color: rgb(255, 223, 160) !important;  /* Яркое золото */
+}
+
+/* ======================================================== */
+/* 3. ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
+/* ======================================================== */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
+    width: 10px;                           /* Тонкий и аккуратным */
+    margin: 0px;
+    border: none;
+}
+
+/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background-color: rgb(35, 57, 92);     
+    min-height: 20px;
+    border-radius: 4px;                    
+}
+
+/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
+    background-color: rgb(52, 115, 186);   
+}
+
+/* Уничтожение стрелочек сверху и снизу у скроллбара */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    border: none;
+    background: none;
+    height: 0px;
 }</string>
        </property>
-       <property name="text">
-        <string>Редактировать</string>
-       </property>
+       <item>
+        <property name="text">
+         <string>Гуманоид</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Аберрация</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Великан</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Дракон</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Зверь</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Исчадие</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Конструкт</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Монстр</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Небожитель</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Нежить</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Растение</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Слизь</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Фея</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Элементаль</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Транспорт</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Объект</string>
+        </property>
+       </item>
       </widget>
-      <widget class="QLabel" name="label_Eror_Editing">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>20</y>
-         <width>211</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Palatino Linotype</family>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
+      <zorder>label_Danger_Editing</zorder>
+      <zorder>lineEdit_Skills_Editing</zorder>
+      <zorder>label_Resistance_Editing</zorder>
+      <zorder>lineEdit_Danger_Editing</zorder>
+      <zorder>frame_Characteristics_Intelligence_Editing</zorder>
+      <zorder>label_Hit_Editing</zorder>
+      <zorder>label_Saving_Throws_Editing</zorder>
+      <zorder>lineEdit_Resistance_Editing</zorder>
+      <zorder>label_Type_Editing</zorder>
+      <zorder>frame_Characteristics_Strength_Editing</zorder>
+      <zorder>frame_Characteristics_Endurance_Editing</zorder>
+      <zorder>label_Cd_Editing</zorder>
+      <zorder>lineEdit_Name_Editing</zorder>
+      <zorder>label_Skills_Editing</zorder>
+      <zorder>lineEdit_Language_Editing</zorder>
+      <zorder>lineEdit_Saving_Throws_Editing</zorder>
+      <zorder>label_Language_Editing</zorder>
+      <zorder>frame_Characteristics_Wisdom_Editing</zorder>
+      <zorder>lineEdit_Hit_Editing</zorder>
+      <zorder>lineEdit_Cd_Editing</zorder>
+      <zorder>label_Feelings_Editing</zorder>
+      <zorder>label_Size_Editing</zorder>
+      <zorder>frame_Characteristics_Agility_Editing</zorder>
+      <zorder>lineEdit_Feelings_Editing</zorder>
+      <zorder>frame_Characteristics_Charisma_Editing</zorder>
+      <zorder>label_Name_Editing</zorder>
+      <zorder>label_State_Imm_Editing</zorder>
+      <zorder>lineEdit_Damage_Imm_Editing</zorder>
+      <zorder>label_Damage_imm_Editing</zorder>
+      <zorder>label_Speed_Editing</zorder>
+      <zorder>lineEdit_Speed_Editing</zorder>
+      <zorder>label_Mastery_Editing</zorder>
+      <zorder>label_Passiveabil_Editing</zorder>
+      <zorder>textEdit_Capabilities_Editing</zorder>
+      <zorder>label_Actions_Editing</zorder>
+      <zorder>label_Reactions_Editing</zorder>
+      <zorder>label_Legendary_Editing</zorder>
+      <zorder>label_Mythical_Editing</zorder>
+      <zorder>textEdit_Actions_Editing</zorder>
+      <zorder>textEdit_Reactions_Editing</zorder>
+      <zorder>textEdit_Legendary_Editing</zorder>
+      <zorder>textEdit_Mythical_Editing</zorder>
+      <zorder>textEdit_Lair_Editing</zorder>
+      <zorder>textEdit_Description_Editing</zorder>
+      <zorder>label_Description_Editing</zorder>
+      <zorder>pushButton_Back_Editing</zorder>
+      <zorder>label_Error_Editing</zorder>
+      <zorder>label_Editing</zorder>
+      <zorder>pushButton_Editing</zorder>
+      <zorder>spinBox_Mastery_Editing</zorder>
+      <zorder>lineEdit_State_Imm_Editing</zorder>
+      <zorder>label_Lair_Editing</zorder>
+      <zorder>comboBox_Size_Editing</zorder>
+      <zorder>comboBox_Type_Editing</zorder>
      </widget>
     </widget>
    </widget>
@@ -6322,10 +6500,7 @@ QListWidget QScrollBar::sub-page:vertical {
 </string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
+     <enum>QFrame::Shape::NoFrame</enum>
     </property>
     <widget class="QListWidget" name="listWidget_ChooseEditing">
      <property name="geometry">
@@ -6338,7 +6513,7 @@ QListWidget QScrollBar::sub-page:vertical {
      </property>
      <property name="styleSheet">
       <string notr="true">/* ======================================================== */
-/* 1. ИЗМЕНЕНО: ПРОЗРАЧНАЯ ПОДЛОЖКА СПИСКА                  */
+/* 1. ПРОЗРАЧНАЯ ПОДЛОЖКА СПИСКА                            */
 /* ======================================================== */
 QListWidget {
     /* Полностью прозрачный фон */
@@ -6348,7 +6523,7 @@ QListWidget {
     border-style: solid;
     border: none !important;              
     
-    /* Очистили отступы, чтобы плашки не сжимались внутри белого бокса */
+    /* Очистили отступы */
     padding: 0px;    
     outline: 0 !important;                           
 }
@@ -6367,7 +6542,8 @@ QListWidget::item {
     font-size: 13px;
     font-weight: bold;
     
-    border: none !important;
+    /* 🟢 ЗОЛОТАЯ ОБВОДКА */
+    border: 1px solid rgb(240, 213, 163) !important;
 }
 
 /* ======================================================== */
@@ -6375,8 +6551,10 @@ QListWidget::item {
 /* ======================================================== */
 QListWidget::item:hover {
     background-color: rgb(50, 65, 87) !important;  
-    color: rgb(240, 213, 163) !important;
-    border: none !important;
+    color: rgb(255, 223, 160) !important; /* Текст загорается ярче */
+    
+    /* 🟢 Обводка тоже становится ярче */
+    border: 1px solid rgb(255, 223, 160) !important; 
 }
 
 /* ======================================================== */
@@ -6388,9 +6566,11 @@ QListWidget::item:selected:focus {
     /* Глубокий бархатный полуночный тон */
     background-color: rgb(20, 26, 36) !important;  
     
-    /* Приглушенное благородное золото для темного фонда */
-    color: rgb(230, 205, 155) !important; 
-    border: none !important;
+    /* Приглушенное благородное золото */
+    color: rgb(212, 163, 89) !important; 
+    
+    /* 🟢 Обводка темнеет вместе с текстом */
+    border: 1px solid rgb(212, 163, 89) !important;
 }
 
 /* ======================================================== */
@@ -6398,7 +6578,7 @@ QListWidget::item:selected:focus {
 /* ======================================================== */
 QListWidget {
     selection-background-color: rgb(20, 26, 36);
-    selection-color: rgb(230, 205, 155);
+    selection-color: rgb(212, 163, 89);
 }</string>
      </property>
     </widget>
@@ -6431,7 +6611,7 @@ QListWidget {
     /* Вспышка золота для текста и наш глобальный шрифт */
     color: rgb(240, 213, 163);
     font-family: &quot;Palatino Linotype&quot;;
-    font-size: 14px; /* При необходимости подправьте размер */
+    font-size: 14px; 
     
     /* Скругление углов */
     border-radius: 6px;
@@ -6439,54 +6619,15 @@ QListWidget {
     /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
     padding: 5px 10px;
     
-    /* Защита от системных рамок */
-    border: none !important;
+    /* 🟢 Золотая обводка */
+    border: 1px solid rgb(240, 213, 163) !important;
 }</string>
      </property>
      <property name="text">
-      <string>Выберете, чтобы отредактировать созданного монстра</string>
+      <string>Выберите, чтобы отредактировать созданного монстра</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_ChooseEditing">
-     <property name="geometry">
-      <rect>
-       <x>610</x>
-       <y>530</y>
-       <width>131</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Palatino Linotype</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
-    color: rgb(240, 213, 163);          /* Яркое золото для текста */
-    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
-    border-radius: 4px;                 /* Прямые углы в стиль вашей поисковой строки */
-    padding: 6px 18px;                  /* Внутренние отступы */
-}
-
-/* Эффект при наведении мышки */
-QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
-}
-
-/* Эффект при нажатии (Шаг 3 из нашего плана) */
-QPushButton:pressed {
-    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
-    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
-}</string>
-     </property>
-     <property name="text">
-      <string>Выбрать</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_BackChooseEditing">
@@ -6501,31 +6642,125 @@ QPushButton:pressed {
      <property name="font">
       <font>
        <family>Palatino Linotype</family>
-       <pointsize>14</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
-    color: rgb(240, 213, 163);          /* Яркое золото для текста */
-    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
-    border-radius: 4px;                 /* Прямые углы в стиль вашей поисковой строки */
-    padding: 6px 18px;                  /* Внутренние отступы */
+    background-color: rgb(31, 39, 53);  /* Глубокий тёмно-синий цвет */
+    color: rgb(240, 213, 163);          /* Золотой текст */
+    border: 1px solid rgb(240, 213, 163) !important; /* 🟢 Золотая обводка */
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 20px;
 }
 
 /* Эффект при наведении мышки */
 QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+    background-color: rgb(45, 56, 76);  /* Кнопка светлеет */
+    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
+    border: 1px solid rgb(255, 223, 160) !important; /* Обводка тоже становится ярче */
 }
 
-/* Эффект при нажатии (Шаг 3 из нашего плана) */
+/* Эффект при нажатии */
 QPushButton:pressed {
-    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
-    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
+    background-color: rgb(20, 25, 35);  /* Уходит в глубокую тень (темнее базового) */
+    color: rgb(212, 163, 89);           /* Приглушенное золото */
+    border: 1px solid rgb(212, 163, 89) !important; /* Обводка темнеет вместе с текстом */
+    
+    /* Эффект &quot;вдавливания&quot; */
+    padding-top: 7px;
+    padding-bottom: 5px;
 }</string>
      </property>
      <property name="text">
       <string>Назад</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_ChooseEditing">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>10</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Palatino Linotype</family>
+       <pointsize>-1</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    /* Заливка цветом с картинки */
+    background-color: rgb(83, 73, 64);  
+    
+    /* Вспышка золота для текста и наш глобальный шрифт */
+    color: rgb(240, 213, 163);
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 18px; /* При необходимости подправьте размер */
+    
+    /* Скругление углов */
+    border-radius: 6px;
+    
+    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
+    padding: 5px 10px;
+    
+    /* Защита от системных рамок */
+    border: none !important;
+}</string>
+     </property>
+     <property name="text">
+      <string>Редактирование</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_ChooseEditing">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>530</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Palatino Linotype</family>
+       <pointsize>-1</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(83, 73, 64);  /* Твой основной постоянный цвет (тёмная кожа) */
+    color: rgb(240, 213, 163);          /* Золотой текст */
+    border: none;                       /* Убираем рамки */
+    border-radius: 4px;                 /* Скругление */
+    padding: 6px 18px;                  /* Внутренние отступы */
+    font-family: &quot;Palatino Linotype&quot;;   /* Наш глобальный шрифт */
+    font-size: 20px;
+}
+
+/* Эффект при наведении мышки */
+QPushButton:hover {
+    background-color: rgb(105, 93, 82); /* Кнопка становится чуть светлее (выделяется из фона) */
+    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
+}
+
+/* Эффект при нажатии */
+QPushButton:pressed {
+    background-color: rgb(60, 53, 46);  /* Кнопка уходит в тень (становится темнее) */
+    color: rgb(240, 213, 163);          /* Возвращаем базовый золотой цвет текста */
+    
+    /* Небольшой фикс для эффекта &quot;вдавливания&quot; (текст сдвигается на 1 пиксель вниз) */
+    padding-top: 7px;
+    padding-bottom: 5px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Подтвердить</string>
      </property>
     </widget>
    </widget>
@@ -6556,10 +6791,7 @@ QFrame QLabel {
 }</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
+     <enum>QFrame::Shape::NoFrame</enum>
     </property>
     <widget class="QScrollArea" name="scrollArea_Create">
      <property name="geometry">
@@ -6651,15 +6883,15 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-578</y>
         <width>1009</width>
-        <height>3200</height>
+        <height>3310</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
         <width>1000</width>
-        <height>3200</height>
+        <height>3310</height>
        </size>
       </property>
       <widget class="QLabel" name="label_Danger_Create">
@@ -6715,7 +6947,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         <rect>
          <x>180</x>
          <y>480</y>
-         <width>641</width>
+         <width>791</width>
          <height>40</height>
         </rect>
        </property>
@@ -6817,7 +7049,7 @@ QLineEdit:focus {
 }</string>
        </property>
        <property name="text">
-        <string>Сопративление</string>
+        <string>Сопротивление</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -6922,10 +7154,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Intelligence_Create">
         <property name="geometry">
@@ -6999,6 +7228,12 @@ QFrame QLabel {
     font-size: 14px;
     font-weight: bold;
 }</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+        <property name="value">
+         <number>10</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Intelligence_Create">
@@ -7266,10 +7501,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Strength_Create">
         <property name="geometry">
@@ -7308,9 +7540,9 @@ QFrame QLabel {
        <widget class="QSpinBox" name="spinBox_Strength_Create">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>6</x>
           <y>20</y>
-          <width>31</width>
+          <width>41</width>
           <height>22</height>
          </rect>
         </property>
@@ -7344,12 +7576,21 @@ QFrame QLabel {
     font-weight: bold;
 }</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Strength_Create">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>40</y>
+          <x>11</x>
+          <y>44</y>
           <width>31</width>
           <height>21</height>
          </rect>
@@ -7404,10 +7645,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Endurance_Create">
         <property name="geometry">
@@ -7481,6 +7719,12 @@ QFrame QLabel {
     font-size: 14px;
     font-weight: bold;
 }</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+        <property name="value">
+         <number>10</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Endurance_Create">
@@ -7600,6 +7844,86 @@ QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
     height: 0px;
 }</string>
        </property>
+       <item>
+        <property name="text">
+         <string>Гуманоид</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Аберрация</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Великан</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Дракон</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Зверь</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Исчадие</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Конструкт</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Монстр</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Небожитель</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Нежить</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Растение</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Слизь</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Фея</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Элементаль</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Транспорт</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Объект</string>
+        </property>
+       </item>
       </widget>
       <widget class="QLabel" name="label_Cd_Create">
        <property name="geometry">
@@ -7643,7 +7967,7 @@ QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
 }</string>
        </property>
        <property name="text">
-        <string>кд</string>
+        <string>Класс доспеха</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -7819,7 +8143,7 @@ QLineEdit:focus {
         <rect>
          <x>180</x>
          <y>430</y>
-         <width>641</width>
+         <width>791</width>
          <height>40</height>
         </rect>
        </property>
@@ -7979,6 +8303,66 @@ QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
     height: 0px;
 }</string>
        </property>
+       <item>
+        <property name="text">
+         <string>Средний</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Крошечный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Маленький</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Огромный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Громадный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Маленький или средний</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Маленький рой крошечных</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Средний рой крошечных</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой рой крошечных</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой рой маленьких</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Большой рой средних</string>
+        </property>
+       </item>
       </widget>
       <widget class="QLabel" name="label_Language_Create">
        <property name="geometry">
@@ -8073,10 +8457,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Wisdom_Create">
         <property name="geometry">
@@ -8150,6 +8531,12 @@ QFrame QLabel {
     font-size: 14px;
     font-weight: bold;
 }</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+        <property name="value">
+         <number>10</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Wisdom_Create">
@@ -8409,10 +8796,7 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <widget class="QLabel" name="label_Agility_Create">
         <property name="geometry">
@@ -8486,6 +8870,12 @@ QFrame QLabel {
     font-size: 14px;
     font-weight: bold;
 }</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+        <property name="value">
+         <number>10</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_Bonus_Agility_Create">
@@ -8564,7 +8954,7 @@ QLineEdit:focus {
 }</string>
        </property>
       </widget>
-      <widget class="QFrame" name="frame_Characteristics_Create">
+      <widget class="QFrame" name="frame_Characteristics_Charisma_Create">
        <property name="geometry">
         <rect>
          <x>300</x>
@@ -8609,12 +8999,9 @@ QFrame QLabel {
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
+        <enum>QFrame::Shape::NoFrame</enum>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLabel" name="label_Characteristics_Create">
+       <widget class="QLabel" name="label_Charisma_Create">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -8648,7 +9035,7 @@ QFrame QLabel {
          <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QSpinBox" name="spinBox_Characteristics_Create">
+       <widget class="QSpinBox" name="spinBox_Charisma_Create">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -8687,8 +9074,14 @@ QFrame QLabel {
     font-weight: bold;
 }</string>
         </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
        </widget>
-       <widget class="QLabel" name="label_Bonus_Characteristics_Create">
+       <widget class="QLabel" name="label_Bonus_Charisma_Create">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -8754,7 +9147,7 @@ QFrame QLabel {
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>780</y>
+         <y>830</y>
          <width>203</width>
          <height>40</height>
         </rect>
@@ -8801,9 +9194,9 @@ QFrame QLabel {
       <widget class="QLineEdit" name="lineEdit_Damage_Imm_Create">
        <property name="geometry">
         <rect>
-         <x>220</x>
-         <y>730</y>
-         <width>170</width>
+         <x>9</x>
+         <y>780</y>
+         <width>961</width>
          <height>40</height>
         </rect>
        </property>
@@ -8908,12 +9301,12 @@ QLineEdit:focus {
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_State_Create">
+      <widget class="QLineEdit" name="lineEdit_State_Imm_Create">
        <property name="geometry">
         <rect>
-         <x>220</x>
-         <y>780</y>
-         <width>170</width>
+         <x>10</x>
+         <y>880</y>
+         <width>961</width>
          <height>40</height>
         </rect>
        </property>
@@ -8968,6 +9361,9 @@ QLineEdit:focus {
     background-color: rgb(31, 39, 53);   /* Возвращаем исходную плотность фона */
     border: 1px solid rgb(255, 223, 160); /* Золотая рамка загорается сочным, ярким светом */
 }</string>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
       <widget class="QLabel" name="label_Speed_Create">
@@ -9073,7 +9469,7 @@ QLineEdit:focus {
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>830</y>
+         <y>930</y>
          <width>159</width>
          <height>40</height>
         </rect>
@@ -9117,115 +9513,11 @@ QLineEdit:focus {
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBox_Mastery_Create">
-       <property name="geometry">
-        <rect>
-         <x>180</x>
-         <y>830</y>
-         <width>170</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>170</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* ======================================================== */
-/* 1. НАСТРОЙКА ОСНОВНОЙ ТЁМНО-СИНЕЙ ПЛАШКИ                 */
-/* ======================================================== */
-QComboBox {
-    /* Наш глубокий тёмно-синий цвет для фона плашки */
-    background-color: rgb(31, 39, 53);   
-    
-    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
-    border-style: solid;
-    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
-    
-    border-radius: 4px;
-    padding: 4px 26px 4px 8px;                  
-    
-    color: rgb(240, 213, 163);           
-    font-family: &quot;Palatino Linotype&quot;;    
-    font-size: 14px;
-    font-weight: bold;
-    combobox-popup: 0;                   
-}
-
-/* ======================================================== */
-/* 2. ФИКС ВЫЛЕТАЮЩЕЙ ПАНЕЛИ И СИНЕГО ВЫДЕЛЕНИЯ WINDOWS         */
-/* ======================================================== */
-QComboBox QAbstractItemView {
-    background-color: rgb(31, 39, 53);     /* Тёмно-синий фон списка */
-    color: rgb(240, 213, 163);             /* Золотые строчки */
-    
-    border: 1px solid rgb(240, 213, 163);   /* Золотой контур меню */
-    border-radius: 4px;
-    outline: none;                         /* Уничтожаем рамку фокуса */
-    padding: 4px;
-    
-    /* ЖЕСТКИЙ ФИКС ДЛЯ ДЛИННОГО ТЕКСТА: Разрешаем списку раздуваться во все стороны */
-    min-width: 240px;                      /* Увеличили базовый минимум под длинный урон */
-}
-
-/* Настройка самих строчек списка вариантов */
-QComboBox QAbstractItemView::item {
-    /* Добавляем больше отступа справа, чтобы текст не прижимался к скроллбару */
-    padding: 6px 20px 6px 12px;                   
-    min-height: 24px;                    
-    font-family: &quot;Palatino Linotype&quot;;
-    color: rgb(240, 213, 163);
-}
-
-/* Стираем синий виндовый цвет при наведении курсора */
-QComboBox QAbstractItemView::item:hover,
-QComboBox QAbstractItemView::item:selected {
-    background-color: rgb(45, 56, 76);     /* Наш приглушенный сине-стальной */
-    color: rgb(255, 223, 160) !important;  /* Яркое золото */
-}
-
-/* ======================================================== */
-/* 3. ЧУТЬ БОЛЕЕ СВЕТЛЫЙ МАТОВЫЙ ПОЛЗУНОК ПРОКРУТКИ            */
-/* ======================================================== */
-QComboBox QAbstractItemView QScrollBar:vertical {
-    background-color: rgb(31, 39, 53);     /* Фон дорожки скролла */
-    width: 10px;                           /* Тонкий и аккуратным */
-    margin: 0px;
-    border: none;
-}
-
-/* Сам бегунок — сделали чуть светлее (было 25, 43, 73) */
-QComboBox QAbstractItemView QScrollBar::handle:vertical {
-    background-color: rgb(35, 57, 92);     
-    min-height: 20px;
-    border-radius: 4px;                    
-}
-
-/* Подсветка бегунка при наведении (тоже сделали пропорционально светлее) */
-QComboBox QAbstractItemView QScrollBar::handle:vertical:hover {
-    background-color: rgb(52, 115, 186);   
-}
-
-/* Уничтожение стрелочек сверху и снизу у скроллбара */
-QComboBox QAbstractItemView QScrollBar::add-line:vertical,
-QComboBox QAbstractItemView QScrollBar::sub-line:vertical,
-QComboBox QAbstractItemView QScrollBar::up-arrow:vertical, 
-QComboBox QAbstractItemView QScrollBar::down-arrow:vertical,
-QComboBox QAbstractItemView QScrollBar::add-page:vertical, 
-QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
-    border: none;
-    background: none;
-    height: 0px;
-}</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_Passiveabil_Create">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>890</y>
+         <y>980</y>
          <width>201</width>
          <height>40</height>
         </rect>
@@ -9273,7 +9565,7 @@ QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>940</y>
+         <y>1030</y>
          <width>981</width>
          <height>261</height>
         </rect>
@@ -9369,7 +9661,7 @@ QScrollBar::sub-page:vertical {
         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -9386,7 +9678,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>1210</y>
+         <y>1300</y>
          <width>159</width>
          <height>40</height>
         </rect>
@@ -9434,7 +9726,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>1530</y>
+         <y>1620</y>
          <width>159</width>
          <height>40</height>
         </rect>
@@ -9482,7 +9774,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>1850</y>
+         <y>1940</y>
          <width>171</width>
          <height>40</height>
         </rect>
@@ -9530,7 +9822,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>2170</y>
+         <y>2260</y>
          <width>191</width>
          <height>40</height>
         </rect>
@@ -9578,7 +9870,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>1260</y>
+         <y>1350</y>
          <width>981</width>
          <height>261</height>
         </rect>
@@ -9674,7 +9966,7 @@ QScrollBar::sub-page:vertical {
         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -9691,7 +9983,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>1580</y>
+         <y>1670</y>
          <width>981</width>
          <height>261</height>
         </rect>
@@ -9787,7 +10079,7 @@ QScrollBar::sub-page:vertical {
         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -9804,7 +10096,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>1900</y>
+         <y>1990</y>
          <width>981</width>
          <height>261</height>
         </rect>
@@ -9900,7 +10192,7 @@ QScrollBar::sub-page:vertical {
         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -9917,7 +10209,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>2220</y>
+         <y>2310</y>
          <width>981</width>
          <height>261</height>
         </rect>
@@ -10013,7 +10305,7 @@ QScrollBar::sub-page:vertical {
         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -10030,7 +10322,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>2490</y>
+         <y>2580</y>
          <width>159</width>
          <height>40</height>
         </rect>
@@ -10078,7 +10370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>2540</y>
+         <y>2630</y>
          <width>981</width>
          <height>261</height>
         </rect>
@@ -10174,7 +10466,7 @@ QScrollBar::sub-page:vertical {
         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -10191,7 +10483,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>2860</y>
+         <y>2950</y>
          <width>981</width>
          <height>261</height>
         </rect>
@@ -10287,7 +10579,7 @@ QScrollBar::sub-page:vertical {
         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -10304,7 +10596,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>2810</y>
+         <y>2900</y>
          <width>159</width>
          <height>40</height>
         </rect>
@@ -10360,27 +10652,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="font">
         <font>
          <family>Palatino Linotype</family>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: rgb(31, 39, 53);  /* Тёмно-синий цвет, как у кнопок классов */
-    color: rgb(240, 213, 163);          /* Яркое золото для текста */
-    border: none;                       /* Убираем рамки, чтобы была сплошная заливка */
-    border-radius: 4px;                 /* Прямые углы в стиль вашей поисковой строки */
-    padding: 6px 18px;                  /* Внутренние отступы */
+    background-color: rgb(31, 39, 53);  /* Глубокий тёмно-синий цвет */
+    color: rgb(240, 213, 163);          /* Золотой текст */
+    border: none;
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-family: &quot;Palatino Linotype&quot;;
+    font-size: 20px;
 }
 
 /* Эффект при наведении мышки */
 QPushButton:hover {
-    background-color: rgb(45, 56, 76);  /* Кнопка становится чуть светлее */
+    background-color: rgb(45, 56, 76);  /* Кнопка светлеет */
+    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
 }
 
-/* Эффект при нажатии (Шаг 3 из нашего плана) */
+/* Эффект при нажатии */
 QPushButton:pressed {
-    background-color: rgb(45, 56, 76);  /* Темнеет в цвет главного фона */
-    color: rgb(212, 163, 89);           /* Золото текста загорается ярче */
+    background-color: rgb(20, 25, 35);  /* Уходит в глубокую тень (темнее базового) */
+    color: rgb(212, 163, 89);           /* Приглушенное золото */
+    
+    /* Эффект &quot;вдавливания&quot; */
+    padding-top: 7px;
+    padding-bottom: 5px;
 }</string>
        </property>
        <property name="text">
@@ -10400,54 +10699,31 @@ QPushButton:pressed {
         <font>
          <family>Palatino Linotype</family>
          <pointsize>-1</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
-    /* Заливка цветом с картинки */
-    background-color: rgb(83, 73, 64);  
-    
-    /* Вспышка золота для текста и наш глобальный шрифт */
-    color: rgb(240, 213, 163);
+    background-color: rgb(52, 73, 62);  /* Зеленый основной цвет */
+    color: rgb(240, 213, 163);          /* Золотой текст */
     font-family: &quot;Palatino Linotype&quot;;
-    font-size: 18px; /* При необходимости подправьте размер */
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 6px 12px;
     
-    /* Скругление углов */
-    border-radius: 6px;
-    
-    /* Внутренние отступы: 5px сверху/снизу, 10px слева/справа */
-    padding: 5px 10px;
-    
-    /* Защита от системных рамок */
-    border: none !important;
 }</string>
        </property>
        <property name="text">
-        <string>Создание</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Create_Ico">
-       <property name="geometry">
-        <rect>
-         <x>290</x>
-         <y>10</y>
-         <width>51</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap>../../../../Downloads/Createe.png</pixmap>
+        <string>Создать</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_Create">
        <property name="geometry">
         <rect>
-         <x>860</x>
-         <y>10</y>
-         <width>131</width>
+         <x>820</x>
+         <y>3230</y>
+         <width>171</width>
          <height>41</height>
         </rect>
        </property>
@@ -10459,42 +10735,42 @@ QPushButton:pressed {
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: rgb(83, 73, 64);  /* Твой основной постоянный цвет (тёмная кожа) */
+    background-color: rgb(52, 73, 62);  /* Зеленый цвет */
     color: rgb(240, 213, 163);          /* Золотой текст */
-    border: none;                       /* Убираем рамки */
-    border-radius: 4px;                 /* Скругление */
-    padding: 6px 18px;                  /* Внутренние отступы */
-    font-family: &quot;Palatino Linotype&quot;;   /* Наш глобальный шрифт */
+    border: none;
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-family: &quot;Palatino Linotype&quot;;
     font-size: 20px;
 }
 
 /* Эффект при наведении мышки */
 QPushButton:hover {
-    background-color: rgb(105, 93, 82); /* Кнопка становится чуть светлее (выделяется из фона) */
-    color: rgb(255, 223, 160);          /* Текст загорается ярким золотом */
+    background-color: rgb(65, 92, 78); /* Зеленый становится чуть светлее */
+    color: rgb(255, 223, 160);         /* Текст загорается ярким золотом */
 }
 
 /* Эффект при нажатии */
 QPushButton:pressed {
-    background-color: rgb(60, 53, 46);  /* Кнопка уходит в тень (становится темнее) */
-    color: rgb(240, 213, 163);          /* Возвращаем базовый золотой цвет текста */
+    background-color: rgb(35, 50, 42); /* Глубокий темно-зеленый */
+    color: rgb(240, 213, 163);         /* Возвращаем базовый золотой цвет текста */
     
-    /* Небольшой фикс для эффекта &quot;вдавливания&quot; (текст сдвигается на 1 пиксель вниз) */
+    /* Эффект &quot;вдавливания&quot; */
     padding-top: 7px;
     padding-bottom: 5px;
 }</string>
        </property>
        <property name="text">
-        <string>Создать</string>
+        <string>Подтвердить</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_Eror_Create">
+      <widget class="QLabel" name="label_Error_Create">
        <property name="geometry">
         <rect>
-         <x>640</x>
-         <y>20</y>
-         <width>211</width>
-         <height>31</height>
+         <x>220</x>
+         <y>3236</y>
+         <width>591</width>
+         <height>35</height>
         </rect>
        </property>
        <property name="font">
@@ -10506,14 +10782,75 @@ QPushButton:pressed {
        <property name="text">
         <string/>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="spinBox_Mastery_Create">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>930</y>
+         <width>49</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>20</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>49</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSpinBox {
+    /* Наш глубокий тёмно-синий цвет для фона плашки */
+    background-color: rgb(31, 39, 53);   
+    
+    /* ХИТРЫЙ ФИКС: Принудительный сброс нативного стиля Windows, чтобы цвет изменился */
+    border-style: solid;
+    border: 1px solid rgb(240, 213, 163); /* Золотая обводка */
+    
+    border-radius: 4px;                  
+    padding: 4px 26px 4px 8px;            /* Оставили те же отступы из примера */
+    
+    color: rgb(240, 213, 163);           /* Золото для текста */
+    font-family: &quot;Palatino Linotype&quot;;    
+    font-size: 14px;
+    font-weight: bold;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+       <property name="value">
+        <number>2</number>
+       </property>
+       <property name="displayIntegerBase">
+        <number>10</number>
+       </property>
       </widget>
      </widget>
     </widget>
    </widget>
+   <zorder>Choose_Delete</zorder>
+   <zorder>Choose_Editing</zorder>
    <zorder>Editing</zorder>
    <zorder>Create</zorder>
-   <zorder>Choose_Editing</zorder>
-   <zorder>Choose_Delete</zorder>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
@@ -10526,12 +10863,12 @@ QPushButton:pressed {
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_6"/>
   </widget>
-  <zorder>Frame_Underlay</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>frame</zorder>
   <zorder>mainContent</zorder>
   <zorder>TopBar</zorder>
   <zorder>frame_filters</zorder>
+  <zorder>Frame_Underlay</zorder>
  </widget>
  <resources>
   <include location="../../resources.qrc"/>

@@ -13,7 +13,6 @@ class RacesPage(BasePage):
         self.go_back_callback = go_back_callback
         self.all_races = []
 
-        self.setup_ui()
         self.load_races()
 
     def setup_ui(self):

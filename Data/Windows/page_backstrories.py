@@ -11,7 +11,6 @@ class BackstoriesPage(BasePage):
         self.go_back_callback = go_back_callback
         self.all_backstories = []
 
-        self.setup_ui()
         self.load_backstories()
 
     def setup_ui(self):

@@ -11,7 +11,6 @@ class SpellsPage(BasePage):
         self.go_back_callback = go_back_callback
         self.all_spells = []
 
-        self.setup_ui()
         self.setup_filters()
         self.load_spells()
 

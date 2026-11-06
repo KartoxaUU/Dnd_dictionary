@@ -335,7 +335,7 @@ class DataManager:
             speed=speed,
             description=kwargs.get('description', ''),
             size=kwargs.get('size', 'Средний'),
-            tipe=kwargs.get('tipe', 'Гуманоид'),
+            type=kwargs.get('type', 'Гуманоид'),
             strengh=kwargs.get('strengh', 10),
             agility=kwargs.get('agility', 10),
             endurance=kwargs.get('endurance', 10),
@@ -360,7 +360,11 @@ class DataManager:
             is_custom=True)
 
         self.session.add(monster)
-        self.session.commit()
+        try:
+            self.session.commit()
+        except Exception:
+            self.session.rollback()
+            raise
         return monster
 
     def update_monster(self, monster_id, **kwargs):
@@ -377,7 +381,11 @@ class DataManager:
             if hasattr(monster, key):
                 setattr(monster, key, value)
 
-        self.session.commit()
+        try:
+            self.session.commit()
+        except Exception:
+            self.session.rollback()
+            raise
         return monster
 
     def delete_monster(self, monster_id):
@@ -391,5 +399,9 @@ class DataManager:
             raise ValueError("Нельзя удалить встроенного монстра")
 
         self.session.delete(monster)
-        self.session.commit()
+        try:
+            self.session.commit()
+        except Exception:
+            self.session.rollback()
+            raise
         return True

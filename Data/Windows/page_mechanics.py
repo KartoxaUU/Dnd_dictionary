@@ -11,7 +11,6 @@ class MechanicsPage(BasePage):
         self.go_back_callback = go_back_callback
         self.all_mechanics = []
 
-        self.setup_ui()
         self.load_mechanics()
 
     def setup_ui(self):

@@ -8,7 +8,6 @@ class MainMenuPage(BasePage):
     def __init__(self, parent=None, show_page_callback=None):
         super().__init__("Data/Screens/main_menu.ui", parent)
         self.show_page_callback = show_page_callback
-        self.setup_ui()
 
     def setup_ui(self):
         """Подключает кнопки"""

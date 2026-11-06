@@ -333,7 +333,7 @@ def main():
                 print_section("РЕЗУЛЬТАТЫ")
                 for monster in monsters:
                     custom = "🔓" if monster.is_custom else "🔒"
-                    print(f"  {custom} {monster.name} ({monster.tipe}, Опасность: {monster.danger})")
+                    print(f"  {custom} {monster.name} ({monster.type}, Опасность: {monster.danger})")
             else:
                 print("\n  ⚠️ Ничего не найдено")
             input("\nНажмите Enter для продолжения...")
@@ -445,7 +445,7 @@ def main():
             speed = input("Скорость: ")
             description = input("Описание: ")
             size = input("Размер (Средний/Большой/Огромный): ") or "Средний"
-            tipe = input("Тип (Гуманоид/Дракон/Зверь...): ") or "Гуманоид"
+            type = input("Тип (Гуманоид/Дракон/Зверь...): ") or "Гуманоид"
             danger = input("Опасность (1/4, 1, 2...): ") or "1"
 
             dm.add_monster(
@@ -455,7 +455,7 @@ def main():
                 speed=speed,
                 description=description,
                 size=size,
-                tipe=tipe,
+                type=type,
                 danger=danger
             )
             print(f"\n✅ Монстр '{name}' добавлен!")
